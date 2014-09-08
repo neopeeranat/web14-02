@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   root 'main#index'
   get 'abc/', to: 'abc#index'
 
+  post "dividebyzero/index" => "dividebyzero#index"
+  get "dividebyzero/show" => "dividebyzero#show"
+  post "dividebyzero/show" => "dividebyzero#show"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
