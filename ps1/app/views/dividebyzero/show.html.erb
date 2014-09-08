@@ -1,0 +1,11 @@
+<p>inside show.html.erb </p>
+
+<%= form_tag("show") do %>
+<%= label_tag(:firstl, "First Number") %>
+<%= text_field_tag(:first) %>
+<%= label_tag(:secondl, "Second Number") %>
+<%= text_field_tag(:second) %>
+<%= submit_tag("Divide") %>
+
+<%= text_field_tag(:result, value= @data3) %>
+<% end %>
