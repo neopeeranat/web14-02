@@ -1,11 +1,13 @@
+<h1>Divide by zero operation</h1> 
 <p>inside show.html.erb </p>
 
 <%= form_tag("show") do %>
-<%= label_tag(:firstl, "First Number") %>
-<%= text_field_tag(:first) %>
-<%= label_tag(:secondl, "Second Number") %>
-<%= text_field_tag(:second) %>
-<%= submit_tag("Divide") %>
+<div> <%= label_tag(:firstl, "First Number") %> </div>
+<div> <%= text_field_tag(:first) %> </div>
+<div> <%= label_tag(:secondl, "Second Number") %> </div>
+<div> <%= text_field_tag(:second) %> </div>
+<div> <%= submit_tag("Divide") %> </div>
 
-<%= text_field_tag(:result, value= @data3) %>
+<div> <%= text_field_tag(:result, value= @data3) %> </div>
 <% end %>
+
