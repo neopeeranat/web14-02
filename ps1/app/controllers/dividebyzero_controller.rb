@@ -15,9 +15,7 @@ class DividebyzeroController < ApplicationController
      @data3 = @data1.to_i / @data2.to_i
    rescue => e
      @data3 = 0
-     #render :text => "About Divide by zero exception"
-     #render :text => e.message
-     render :text => "<h1>"+ "About to divide by 0" + "</h1>" +e.backtrace.inspect
+     render :text => "<h1>"+ "About to divide by 0 exception" + "</h1>" + "<font size =2>" + e.backtrace.inspect + "</font>"
    end
    #parmas[:result] = @data3
    end
