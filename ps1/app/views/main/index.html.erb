@@ -5,7 +5,14 @@
        
   </li>
  <li>
-       <%=link_to 'Divide by Zero', controller: "dividebyzero" , action: "show" %>  
+       <%=link_to 'Divide by Zero', controller: "dividebyzero" , action: "index" %>  
  </li>
  
 </ul>
+<h3>Solution for divide by zero</h3>
+<p>
+ When program catch error by use syntax [begin resuce end], at "begin" part before calculation line, we add...<br/>
+ <code>logger.info "About Divide by zero exceptions"</code> <br/>
+in our code. This code will send log into /path/to/our/app/log/production.log
+
+</p>

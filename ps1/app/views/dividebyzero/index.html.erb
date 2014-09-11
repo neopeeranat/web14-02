@@ -1,3 +1,20 @@
-<p>inside index.html.erb </p>
+<h1>About to divide by 0</h1> 
+<%= form_tag("") do %>
+<div> <%= label_tag(:first, "First Number") %> </div>
+<div> <%= text_field_tag(:first, value= @data1) %> </div>
+<div> <%= label_tag(:second, "Second Number") %> </div>
+<div> <%= text_field_tag(:second, value= @data2) %> </div>
+<div> <%= submit_tag("Divide") %> </div>
+<% if @data3 %>
+<p> Result : <%= @data3 %> </p>
+<% end %>
+<% end %>
 
-<%=link_to 'Divide by Zero', controller: "dividebyzero" , action: "show" %>
+<%if @e_msgs %>
+<h1>About to divide by 0 exception</h1>
+<h3>Error class : <%=  @e_class %></h3>
+<% @e_msgs.each do |e_msg| %>
+<p style="font-size:0.7em"><%= e_msg %></p>
+<% end %>
+<% end %>
+
