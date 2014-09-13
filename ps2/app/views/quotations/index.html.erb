@@ -1,0 +1,34 @@
+<h1>Listing quotations</h1>
+<%= render 'search' %>
+<table>
+  <thead>
+    <tr>
+      <th>Quote</th>
+      <th>Author name</th>
+      <th>Category</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @quotations.each do |quotation| %>
+      <tr>
+        <td><%= quotation.quote %></td>
+        <td><%= quotation.author_name %></td>
+        <td><%= Category.find_by_id(quotation.category_id).name  %></td>
+        <td><%= link_to 'Show', quotation %></td>
+        <td><%= link_to 'Edit', edit_quotation_path(quotation) %></td>
+        <td><%= link_to 'Destroy', quotation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<td><%= link_to 'Hide', hide_quotation_path(quotation) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Quotation', new_quotation_path %>
+
+<br>
+<%= session[:hide_id] %>// <%= session[:hide_id].nil? %><br>
+<%= link_to 'erase my personalization', erase_hide_quotations_path ,data: { confirm: 'Are you sure?' } %>
