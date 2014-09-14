@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :category_id %><br>
-    <%= f.select :category_id, options_from_collection_for_select(Category.all, "id", "name", @quotation.category_id) %><br>
+    <%= f.select :category_id, options_from_collection_for_select(Category.all, "id", "name", @quotation.category_id) %><div id="notice"><%= notice %></div><br>
     <%= link_to 'New Category', new_category_path %>
   </div>
   <div class="actions">

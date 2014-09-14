@@ -3,14 +3,24 @@ class QuotationsController < ApplicationController
   # GET /quotations
   # GET /quotations.json
   def index
-    if session[:hide_id].nil?
+    
+    #hide all quotation in session[:hide_id]
+    if session[:hide_id].nil? 
       @quotations = Quotation.all
     else
       @quotations = Quotation.where.not(id: session[:hide_id])
     end
-    if params[:search]
+    
+    #After filter by session[:hide_id], search by check in quote and author columns
+    if !params[:search].blank?
       @quotations = @quotations.search(params[:search])
       @search = params[:search]
+    end
+
+    respond_to do |format|
+      format.html #index.html.erb
+      format.json { render json: @quotations }
+      format.xml { render :xml => @quotations }
     end
   end
 
@@ -72,7 +82,8 @@ class QuotationsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
+  #add quotation_id to session[:hide_id]
   def hide
     if session[:hide_id].nil?
       session[:hide_id] = []
@@ -81,9 +92,37 @@ class QuotationsController < ApplicationController
     redirect_to :back
   end
 
+  #clear quotation_id in session[:hide_id]
   def erase
     session.delete(:hide_id)
     redirect_to :back
+  end
+  
+  #get xml file from user and insert Quotation into database
+  def upload
+    #if want to check uploaded file is xml
+    if File.extname(params[:xml_file].original_filename) != ".xml"
+    end
+
+    uploaded_xml_string = params[:xml_file].read
+    quotations = Hash.from_xml(uploaded_xml_string)["quotations"]
+
+    quotations.each do |quotation|
+     #Not care if duplicate
+      Quotation.create(
+      	:quote => quotation["quote"],
+        :author_name => quotation["author_name"],
+        :category_id => quotation["category_id"])	
+     
+     #Check duplicate id 
+     # if quotation["id"].nil? || Quotation.where(id: quotation["id"]).count == 0
+     #   q = ActionController::Parameters.new(quotation)
+     #   Quotation.create(quotation)
+     # else
+     #   Quotation.find(quotation["id"]).update_attributes(quotation) 
+     # end
+    end
+    redirect_to :back, notice: 123
   end
 
   private

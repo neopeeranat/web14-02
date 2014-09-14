@@ -1,6 +1,7 @@
 Rails.application.routes.draw do	
   get 'quotations/erase' => 'quotations#erase', as: :erase_hide_quotations
   get 'quotations/search' => 'quotations#search', as: :search_quotations
+  post 'quotations/upload' => 'quotations#upload'
   root "quotations#index"
   resources :quotations 
   get 'quotations/:id/hide' => 'quotations#hide', as: :hide_quotation
