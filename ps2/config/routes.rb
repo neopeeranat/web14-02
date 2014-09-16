@@ -1,19 +1,21 @@
 Rails.application.routes.draw do	
+  get 'basic_sql/new'
+
   get 'quotations/erase' => 'quotations#erase', as: :erase_hide_quotations
   get 'quotations/search' => 'quotations#search', as: :search_quotations
   post 'quotations/upload' => 'quotations#upload'
-  root "quotations#index"
+  #root "quotations#index"
   resources :quotations 
   get 'quotations/:id/hide' => 'quotations#hide', as: :hide_quotation
   resources :categories, :only => [:new, :create]
   
-  
+  post 'basic_sql/show' => 'basic_sql#loadfile'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'basic_sql#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
