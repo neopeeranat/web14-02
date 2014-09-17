@@ -1,0 +1,5 @@
+<h3>Import XML File</h3>
+<%= #form_tag({action: :loadfile}, multipart: true, :accept => 'text/xml') do %>
+    <%= file_field_tag 'textfile' %></br>
+    <%= submit_tag 'loadfile'%>
+<% #end %>
