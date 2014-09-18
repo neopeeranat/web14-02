@@ -1,0 +1,2 @@
+module BasicSqlHelper
+end
