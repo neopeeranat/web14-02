@@ -22,28 +22,28 @@ table,th, td
           and each line is separated by tab. The
           structure of a file and table is same therefor, no need for the delimiter to mention in the query</td>
         <td width="20%"> <b>COPY my_stocks from '/home/siraj/Desktop/RecordsFile.txt';</b></td>
-        <td width="45"><%= image_tag "coping_data_from_file.png" %><img src="coping_data_from_file.png" alt="Coping data from file"></td>
+        <td width="45"><%= image_tag "coping_data_from_file.png", alt: "Coping data from file" %></td>
       </tr>
     <tr>
        <td> 7 .2 </td>
        <td> Creating my_stocks table </td>
        <td> <b> create table my_stocks(symbol varchar(2) not null, n_shares integer not null,
          date_acquired date not null); </b></td>
-       <td><img src="7.1_nw.png" alt="Creating my stocks table"></td>
+       <td><%= image_tag "7.1_nw.png", alt: "Creating my stocks table" %></td>
     </tr>
     <tr>
        <td> 8. a </td>
        <td style="word-wrap: break-word"> One statement that creating table and inserting value from the other table </td>
        <td style="word-wrap: break-word"> <b> create table stock_prices as select symbol, date_aquired as qoute_date, n_shares as price
          from my_stocks; </b></td>
-       <td><img src="creating_and_inserting_data8.1.png" alt="Creating table and inserting data from other table"></td>
+       <td><%= image_tag "creating_and_inserting_data8.1.png", alt:"Creating table and inserting data from other table" %></td>
     </tr>
     <tr>
        <td> 8 .b </td>
        <td style="word-wrap: break-word"> <div> Creating table newly_acquired_stocks </div> </td>
        <td style="word-wrap: break-word"> <b> create table newly_acquired_stocks (symbol  varchar(20) not null, n_shares integer not null,
          date_acquired date not null) </b></td>
-      <td><img src="newly_acquried_stocks.png" alt="Creating newly_acquired_stock table"></td>
+      <td><%= image_tag "newly_acquried_stocks.png", alt: "Creating newly_acquired_stock table" %></td>
     </tr>
     <tr>
         <td>8 .c </td>
@@ -52,7 +52,7 @@ table,th, td
        </td>
        <td wrap> <b> insert into newly_acquired_stocks(select * from my_stocks limit(select count(*)/2 from my_stock));
        </b> </td>
-      <td><img src="inerting_half_records.png" alt="Creating new table and inserting half record from other table"></td>
+      <td><%= image_tag "inerting_half_records.png", alt:"Creating new table and inserting half record from other table" %></td>
     </tr>
     <tr>
        <td> 9 </td>
@@ -60,7 +60,7 @@ table,th, td
          number of shares, price per share, and current value. </td>
        <td> <b> select my_stocks.symbol, n_shares, prices, n_shares * prices as current_value
          from my_stocks, stock_prices where my_stocks.symbol = stock_prices.symbol;</b></td>
-      <td><img src="Join_query_9.png" alt="Generating join from two tables"></td>
+      <td><%= image_tag "Join_query_9.png", alt: "Generating join from two tables" %></td>
     </tr>
     <tr>
        <td> 10 </td>
@@ -69,7 +69,7 @@ table,th, td
     that the symbol appear in both tables. Modify your statement to use an OUTER JOIN instead so
     that you’ll get a complete report of all your stocks, but won’t get price information if none is available. </td>
        <td><b>select * from my_stocks full outer join stock_prices on my_stocks.symbol=stock_prices.symbol;</b></td>
-      <td><img src="outer_join_10.2_new.png" alt="Outer join of my_stock and stock_prices table"></td>
+      <td><%= image_tag "outer_join_10.2_new.png", alt: "Outer join of my_stock and stock_prices table" %></td>
     </tr>
 <% end %>
 </table>
