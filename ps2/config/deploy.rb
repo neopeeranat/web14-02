@@ -9,7 +9,7 @@ set :repo_url, 'ssh://git@vgl-ait.org/web14-02.git'
 
 # Default deploy_to directory is /var/www/my_app
  set :deploy_to, '/home/deployer/capistrano'
-
+ set :bundle_gemfile, -> { File.join(release_path,fetch(:application),'Gemfile') }
 # Default value for :scm is :git
 # set :scm, :git
 
@@ -40,6 +40,8 @@ namespace :deploy do
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
+      execute "mkdir -p #{current_path}/#{fetch(:application)}/tmp"
+      info "create folder #{current_path}/#{fetch(:application)}/tmp"
       execute :touch, File.join(release_path,fetch(:application),'/tmp/restart.txt')
     end
   end
