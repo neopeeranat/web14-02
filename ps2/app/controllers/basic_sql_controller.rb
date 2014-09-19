@@ -1,6 +1,6 @@
 class BasicSqlController < ApplicationController
   def index
-    render 'new'
+    #render 'new'
     #redirect_to :action => :contact
   end
   def loadfile
