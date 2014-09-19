@@ -1,15 +1,16 @@
-Rails.application.routes.draw do	
+Rails.application.routes.draw do
+  root 'main#index'
   get 'basic_sql/new'
-  root 'basic_sql#index'
+
   get 'quotations/erase' => 'quotations#erase', as: :erase_hide_quotations
   get 'quotations/search' => 'quotations#search', as: :search_quotations
   post 'quotations/upload' => 'quotations#upload'
   #root "quotations#index"
-  resources :quotations 
+  resources :quotations
   get 'quotations/:id/hide' => 'quotations#hide', as: :hide_quotation
   resources :categories, :only => [:new, :create]
-  
-  match "basic_sql/new" => "basic_sql#new" , via: [:get,:post]
+
+  match "basic_sql/" => "basic_sql#index" , via: [:get,:post]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

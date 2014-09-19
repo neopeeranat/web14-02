@@ -3,14 +3,14 @@ class QuotationsController < ApplicationController
   # GET /quotations
   # GET /quotations.json
   def index
-    
+
     #hide all quotation in session[:hide_id]
-    if session[:hide_id].nil? 
+    if session[:hide_id].nil?
       @quotations = Quotation.all
     else
       @quotations = Quotation.where.not(id: session[:hide_id])
     end
-    
+
     #After filter by session[:hide_id], search by check in quote and author columns
     if !params[:search].blank?
       @quotations = @quotations.search(params[:search])
@@ -82,7 +82,7 @@ class QuotationsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   #add quotation_id to session[:hide_id]
   def hide
     if session[:hide_id].nil?
@@ -97,7 +97,7 @@ class QuotationsController < ApplicationController
     session.delete(:hide_id)
     redirect_to :back
   end
-  
+
   #get xml file from user and insert Quotation into database
   def upload
     #if want to check uploaded file is xml
@@ -112,17 +112,17 @@ class QuotationsController < ApplicationController
       Quotation.create(
       	:quote => quotation["quote"],
         :author_name => quotation["author_name"],
-        :category_id => quotation["category_id"])	
-     
-     #Check duplicate id 
+        :category_id => quotation["category_id"])
+
+     #Check duplicate id
      # if quotation["id"].nil? || Quotation.where(id: quotation["id"]).count == 0
      #   q = ActionController::Parameters.new(quotation)
      #   Quotation.create(quotation)
      # else
-     #   Quotation.find(quotation["id"]).update_attributes(quotation) 
+     #   Quotation.find(quotation["id"]).update_attributes(quotation)
      # end
     end
-    redirect_to :back, notice: 123
+    redirect_to :back
   end
 
   private
