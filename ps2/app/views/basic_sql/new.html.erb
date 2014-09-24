@@ -71,5 +71,85 @@ table,th, td
        <td><b>select * from my_stocks full outer join stock_prices on my_stocks.symbol=stock_prices.symbol;</b></td>
       <td><%= image_tag "outer_join_10.2_new.png", alt: "Outer join of my_stock and stock_prices table" %></td>
     </tr>
+<tr>
+       <td> 11 </td>
+       <td wrap> PL/SQL: Inspired by Wall Street’s methods for valuing Internet companies, we’ve developed our own
+valuation method for this problem set: a stock is valued at the sum of the ASCII characters making up
+its symbol. (Note that students who’ve used lowercase letters to represent symbols will have higher-
+valued portfolios than those who’ve used all-uppercase symbols; “IBM” is worth only $216, whereas
+“ibm” is worth $312!) Define a PL/SQL function that takes a trading symbol as its argument and
+returns the stock value. With a single UPDATE statement, update stock prices to set each stock’s
+value to whatever is returned by this PL/SQL procedure. Define a PL/SQL function that takes no
+arguments and returns the aggregate value of the portfolio (n shares * price for each stock). You’ll
+want to define your JOIN from DB Exercise 3 (above) as a cursor and then use the PL/SQL Cursor
+FOR LOOP facility. Hint: when you’re all d </td>
+       <td> <b> CREATE FUNCTION ascii_val(symbol varchar(20)) RETURNS integer AS $$
+DECLARE	
+sum INTEGER:=0;
+i INTEGER:=0;	
+BEGIN
+	FOR i IN 0..length(symbol) LOOP
+		sum=sum+ascii(SUBSTRING(symbol,length(symbol), 1 ));	
+	END LOOP;
+	RETURN sum;	
+END;
+$$ LANGUAGE plpgsql;	
+
+UPDATE stock_prices SET price =ascii_val(symbol) WHERE symbol IN (SELECT symbol FROM my_stocks);
+</b></td>
+      <td><%= image_tag "11.New.png"%></td>
+    </tr>
+<tr>
+       <td> 12 </td>
+       <td wrap> Buy More of the Winners: Rather than taking your profits on the winners, buy more of them! Use
+SELECT AVG() to figure out the average price of your holdings. Using a single INSERT with SELECT state-
+ment, double your holdings in all the stocks whose price is higher than average (with date acquired
+set to current date). Rerun your query from DB Exercise 4. Note that in some cases you will have
+two rows for the same symbol. If what you’re really interested in is your current position, you want
+a report with at most one row per symbol. Use a select ... group by ... query from my stocks to
+produce a report of symbols and total shares held. Use a select ... group by ... query JOINing with
+stock prices to produce a report of symbols and total value held per symbol. Use a select ... group
+by ... having ... query to produce a report of symbols, total shares held, and total value held per
+symbol restricted to symbols in which you have at least two blocks of shares (i.e., the “winners”). </td>
+       <td> <b> 12.1)
+
+INSERT INTO my_stocks
+SELECT ms.symbol, ms.n_shares,CURRENT_DATE
+    FROM my_stocks ms
+    LEFT JOIN stock_prices sp
+    ON ms.symbol = sp.symbol
+    WHERE sp.price > (select avg(price) from stock_prices) ;
+
+12.2)
+
+SELECT symbol,sum(n_shares) FROM my_stocks GROUP BY symbol;
+
+12.3)
+
+SELECT ms.symbol, sum(ms.n_shares*sp.price) as total_value 
+    FROM my_stocks ms
+    INNER JOIN stock_prices sp
+    ON ms.symbol = sp.symbol GROUP BY ms.symbol;
+
+12.4)
+
+SELECT ms.symbol,sum(ms.n_shares) as total_shares, sum(ms.n_shares*sp.price) as total_value 
+    FROM my_stocks ms
+    INNER JOIN stock_prices sp
+    ON ms.symbol = sp.symbol GROUP BY ms.symbol HAVING COUNT(ms.symbol)>=2; </b></td>
+       <td><%= image_tag "12.1.png"%> <%= image_tag "12.4.png"%><%= image_tag "12.4secpart.jpg"%></td>
+    </tr>
+<tr>
+       <td> 13</td>
+       <td>Encapsulate your queries with a view: Using the final query above, create a view called stocks i like
+that encapsulates the final query. </td>
+       <td wrap><b> CREATE VIEW stocks_i_like as SELECT ms.symbol,sum(ms.n_shares) as total_shares,sum (ms.n_shares*sp.price) as total_value From my_stocks ms INNER JOIN stock_prices sp ON ms.symbol=sp.symbol GROUP BY ms.symbol HAVING COUNT(ms.symbol)>=2;
+
+#and we can query the view above as follows:
+
+SELECT * FROM stocks_i_like;</b>  </td>
+       <td><%= image_tag "13.png"%> </td>
+    </tr>
 <% end %>
+
 </table>
