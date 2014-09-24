@@ -36,6 +36,17 @@ set :repo_url, 'ssh://git@vgl-ait.org/web14-02.git'
 
 namespace :deploy do
 
+  desc 'Precompile Asset'
+  task :precompile do
+    on roles(:app), in: :sequence, wait: 5 do
+      within "#{current_path}/#{fetch(:application)}" do
+        with rails_env: :production do
+          execute :rake, "assets:precompile"
+        end
+      end
+    end
+  end
+
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
@@ -46,7 +57,7 @@ namespace :deploy do
     end
   end
 
-  after :publishing, :restart
+  after :publishing, :precompile , :restart
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
