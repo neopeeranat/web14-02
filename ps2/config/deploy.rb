@@ -9,7 +9,7 @@ set :repo_url, 'ssh://git@vgl-ait.org/web14-02.git'
 
 # Default deploy_to directory is /var/www/my_app
  set :deploy_to, '/home/deployer/capistrano'
-
+ set :bundle_gemfile, -> { File.join(release_path,fetch(:application),'Gemfile') }
 # Default value for :scm is :git
 # set :scm, :git
 
@@ -36,15 +36,28 @@ set :repo_url, 'ssh://git@vgl-ait.org/web14-02.git'
 
 namespace :deploy do
 
+  desc 'Precompile Asset'
+  task :precompile do
+    on roles(:app), in: :sequence, wait: 5 do
+      within "#{current_path}/#{fetch(:application)}" do
+        with rails_env: :production do
+          execute :rake, "assets:precompile"
+        end
+      end
+    end
+  end
+
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
+      execute "mkdir -p #{current_path}/#{fetch(:application)}/tmp"
+      info "create folder #{current_path}/#{fetch(:application)}/tmp"
       execute :touch, File.join(release_path,fetch(:application),'/tmp/restart.txt')
     end
   end
 
-  after :publishing, :restart
+  after :publishing, :precompile , :restart
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do

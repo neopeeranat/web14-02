@@ -33,3 +33,17 @@
 <%= render 'session' %>
 <br/>
 <%= render 'xml_part' %>
+<br/>
+<br/>
+<h4>Q1</h4>
+<p> If using Rails, explain how ActiveRecord uses an SQL sequence object for the ID field.</p>
+<p>Answer : when rails create model and use 'rake db:create && rake db:migrate' it will create table for model which add id field automatically.<br/>
+     As you can see, the ID will increasing every time this table has insert new row.</br>
+  <%= image_tag 'Q1.png' %><br/>
+</p>
+
+<h4>Resource for Q1</h4>
+  <ul>
+    <li><%= link_to "Active Record" , "http://edgeguides.rubyonrails.org/active_record_basics.html#schema-conventions" %>
+    <li><%= link_to "Squence Increment", "http://www.postgresql.org/docs/8.1/static/functions-sequence.html" %>
+  </ul>
