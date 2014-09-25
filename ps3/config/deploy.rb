@@ -8,8 +8,13 @@ set :repo_url, 'ssh://git@vgl-ait.org/web14-02.git'
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
 # Default deploy_to directory is /var/www/my_app
- set :deploy_to, '/home/deployer/capistrano'
- set :bundle_gemfile, -> { File.join(release_path,fetch(:application),'Gemfile') }
+ set :deploy_to, '/home/deployer/ps3'
+# set :bundle_gemfile, -> { File.join(release_path,fetch(:application),'Gemfile') }
+
+# Set up a strategy to deploy only a project directory (not the whole repo)
+ set :git_strategy, RemoteCacheWithProjectRootStrategy
+ set :project_root, 'ps3'
+
 # Default value for :scm is :git
 # set :scm, :git
 
@@ -57,7 +62,10 @@ namespace :deploy do
     end
   end
 
-  after :publishing, :precompile , :restart
+  #after :publishing
+  #, :precompile , :restart
+
+
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
