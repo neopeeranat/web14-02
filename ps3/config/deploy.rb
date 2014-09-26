@@ -56,9 +56,9 @@ namespace :deploy do
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
-      execute "mkdir -p #{current_path}/#{fetch(:application)}/tmp"
-      info "create folder #{current_path}/#{fetch(:application)}/tmp"
-      execute :touch, File.join(release_path,fetch(:application),'/tmp/restart.txt')
+      execute "mkdir -p #{current_path}/tmp"
+      info "create folder #{current_path}/tmp"
+      execute :touch, File.join(release_path,'/tmp/restart.txt')
     end
   end
 
