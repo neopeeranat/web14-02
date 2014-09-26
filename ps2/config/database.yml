@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: ps2_production
-  #username: deployer
-  #password: <%= ENV['PS2_DATABASE_PASSWORD'] %>
+  username: deployer
+  password: <%= ENV['PS2_DATABASE_PASSWORD'] %>

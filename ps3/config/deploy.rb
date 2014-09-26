@@ -1,19 +1,19 @@
 # config valid only for Capistrano 3.1
 lock '3.2.1'
 
-set :application, 'ps2'
+set :application, 'ps3'
 set :repo_url, 'ssh://git@vgl-ait.org/web14-02.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
 # Default deploy_to directory is /var/www/my_app
- set :deploy_to, '/home/deployer/ps2'
+ set :deploy_to, '/home/deployer/ps3'
 # set :bundle_gemfile, -> { File.join(release_path,fetch(:application),'Gemfile') }
 
- # Set up a strategy to deploy only a project directory (not the whole repo)
+# Set up a strategy to deploy only a project directory (not the whole repo)
  set :git_strategy, RemoteCacheWithProjectRootStrategy
- set :project_root, 'ps2'
+ set :project_root, 'ps3'
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -56,13 +56,16 @@ namespace :deploy do
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
-      execute "mkdir -p #{current_path}/tmp"
-      info "create folder #{current_path}/tmp"
-      execute :touch, File.join(release_path,'/tmp/restart.txt')
+      execute "mkdir -p #{current_path}/#{fetch(:application)}/tmp"
+      info "create folder #{current_path}/#{fetch(:application)}/tmp"
+      execute :touch, File.join(release_path,fetch(:application),'/tmp/restart.txt')
     end
   end
 
-  #after :publishing, :precompile , :restart
+  #after :publishing
+  #, :precompile , :restart
+
+
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
