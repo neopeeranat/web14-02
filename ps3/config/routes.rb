@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
 
-
-=======
   get 'main/index'
-  root 'main#index'
->>>>>>> 6e5a1e6d7259db070520f7bfafe2a6b245d69f7a
+  #root 'main#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
