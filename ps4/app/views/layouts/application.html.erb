@@ -1,42 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Ps4</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-ix the body of app/views/layout/application.html.erb:
-<% if flash[:notice] %>
-    <p class="notice"><%= notice %></p>
-<% end %>
-<% if flash[:alert] %>
-    <p class="alert"><%= alert %></p>
-    4<% end %>
-<% if flash[:error] %>
-    <div id="error">
-      <%= flash[:error] %>
-    </div>
-<% end %>
-<div class="container-fluid">
-  <div class="row-fluid">
-    <div class="span12 header">
-      <h2>Readit - Links list</h2>
-    </div>
-  </div>
-  <div class="row-fluid">
-    <div class="span3 manage_panel">
-      <h3><a href="/">&larr; Home</a></h3>
-      <%= yield :role_sidebar %>
-      <%= render :partial => "layouts/current_user_info" %>
-    </div>
-    <div class="span9 main_content">
-      <%= yield :role_main %>
-      <%= yield %>
-    </div>
-  </div>
-</div>
-</div>
-</body>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Ps4" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Ps4" %>">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <header>
+      <%= render 'layouts/navigation' %>
+    </header>
+    <main role="main">
+       <%= render 'layouts/messages' %>
+       <%= yield %>
+    </main>
+  </body>
 </html>

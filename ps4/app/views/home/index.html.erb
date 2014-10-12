@@ -1,0 +1,94 @@
+
+     <h4 align="center">Problem Solution 4</h4>
+    <table align="center">
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Simple structure</td>
+        <td>These are my plane in developing Online Picnic Information System</td>
+      </tr>
+      <tr>
+        <td>Content</td>
+        <td>
+          <ul><li>The following contents is provided to the user.</li></ul>
+          <ul>
+            <li>User may be able to search for a particular place for their picnic</li>
+            <li>User may be able to write review about web site</li>
+            <li>User may be able to enter the data for a particular place like distance, vehicle and their expenditure</li>
+            <li>For entering information about the place the user may register yourself using our User Registration <br>
+              procedure. Its simple only providing their email and password.</li>
+            <li>USer may be able to visit share the web cite with other friends</li>
+            <li>We will try to provide bilingual facilities i.e English as well as Thai language</li>
+          </ul>
+        </td>
+      </tr>
+      <tr><td>Two type of Users</td>
+        <td><ol>
+          <li>Ordinary user:- One only visit the web cite and will enter review and information about picnic place only. He willl
+          not able to delete or modify the contents</li>
+          <li>Administrator:- He will perform any action</li>
+        </ol></td>
+      </tr>
+      <tr>
+        <td>Tool and Technology</td>
+        <td>For our system we have plane to use the following tool and technology.
+          <ul>
+            <li>Postgresql Server on backend side</li>
+            <li>Ruby on Rails tool for developing web cite (front Side)</li>
+            <li>Client/sever side java scripts</li>
+            <li>Ubuntu Operating system</li>
+            <li>User data base who want to post information about their trip</li>
+            <li>Data base for you user reviews</li>
+            <li> Data base for storing information about picnic point</li>
+
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Avoiding SQl Injection and XSS attacks
+        <td>
+          <ul>
+            <li>For some of the field like providing password we will force the https protocol to transfer the data <br>
+            between client and server.Moreover the should be encrypted before storing into the data base</li>
+            <li>For the controller which transfer the sensitive data we use this command to transfer http request to https <br>
+            <b>config.to_prepare { Devise::SessionsController.force_ssl }</b></li>
+            <li>For searching about the place we will always use query parameters to avoid sql injection. instead of this one <br>
+            <b>Email.find( :all, :conditions => "owner_id = 123 AND subject = '#{params[:subject]}'" )</b> we will always use the following cond<br>
+            <b>Email.find( :all, :conditions => [ "owner_id = 123 AND subject = ?",params[:subject] ])</b></li>
+            <li>Whenever we want to use helper method then we will declare those method as a private so that the attacker can't use it for its purpose</li>
+            <li>We list the attributes that are are not accessible to the user using <b>attr protected</b> in user class definition </li>
+            <li> Similarly we will use <b>before_filter, before_login and the_role_required</b> in class which storing sensitive data to provide the security</li>
+            <li> <p>To avoid the XSS injections, we will use <i>Sanitize</i> which allow certain elements, certain attributes within those elements, and even certain URL protocols within attributes
+              <br>that contain URLs. Any HTML elements or attributes that you don’t explicitly allow will be removed. Because it’s based on Nokogiri, a full-fledged HTML parser, rather
+               than a bunch of fragile regular expressions,
+              Sanitize has no trouble dealing with malformed or maliciously-formed HTML. When in doubt, Sanitize always errs on the side of caution.</li> </p>
+            <li>For the session hijacking we will use SSL to prevent the injection</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>User registration and management page flow</td>
+        <td><%=image_tag  "PageFlowUSerRegistration.png" %></td>
+      </tr>
+      <tr>
+        <td>User registration and management page flow</td>
+        <td><%= image_tag "UseMP.png" %></td>
+      </tr>
+      <!-- <tr>
+        <td>User administration pages</td>
+        <td><%= link_to 'User administration pages', 'admin/roles/' %></td>
+      </tr>
+      <tr>
+        <td>User registration and login pages</td>
+        <td><%= link_to 'User registration and login pages', 'users/sign_in/' %></td>
+      </tr> -->
+      <tr>
+        <td>Links for other portion of the PS4 parts</td>
+        <td>
+          <a href="">Building user Model</a> <br>
+
+          <a href="">Check referential integrity and queries</a><br></td>
+      </tr>
+    </table>

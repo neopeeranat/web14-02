@@ -1,0 +1,4 @@
+<h3>Role</h3>
+<p>Role name: <%= @role.role_name if @role.role_name %></p>
+<p>Total user who have this role : <%= @role.users.count %></p>
+<%= link_to 'Back', :back %>

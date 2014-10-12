@@ -1,0 +1,23 @@
+<td>
+  <%= link_to user.email, admin_user_path(user) %>
+</td>
+<td>
+  <% if user.id != 1 %>
+    <%= form_for [:admin, user] do |f| %>
+      <%= f.collection_select :role_id, Role.all , :id, :role_name, {:selected => user.role.id}%>
+      <%= f.submit 'Change Role', :class => 'button-xs' %>
+    <% end %>
+  <% else %>
+    <%= user.role.role_name %>
+  <% end %>
+</td>
+<td>
+  <% if user.id != 1 %>
+    <%= form_for [:admin, user] do |f| %>
+      <%= f.check_box :banned, {checked: user.banned, onChange:'this.form.submit()'}%>
+    <% end %>
+  <% end %>
+</td>
+<td>
+  <%= link_to("Delete user", admin_user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button-xs') unless user == current_user %>
+</td>

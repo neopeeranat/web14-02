@@ -1,0 +1,51 @@
+<%#= render 'admin/users', locals: {users: @users} %>
+<div class="container">
+  <div class="row">
+    <h3>Users</p></h3>
+    <div class="column">
+      <table class="table">
+        <thead>
+          <tr class="info">
+            <th style="text-align:center">Email</th>
+            <th style="text-align:center">Role</th>
+            <th style="text-align:center">Banned</th>
+            <th style="text-align:center"></th>
+          <tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <%= render :partial => 'admin/user', :locals => { :user => user } %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <h3>Roles</h3>
+    <div class="column">
+      <table class="table">
+        <thead>
+          <tr class="info">
+            <th style="text-align:center">Name</th>
+            <th style="text-align:center"></th>
+          <tr>
+        </thead>
+        <tbody>
+          <% @roles.each do |role| %>
+            <tr>
+              <%= render :partial => 'admin/role', :locals => { :role => role } %>
+            </tr>
+          <% end %>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <%= link_to('New Role',new_admin_role_path,class:'btn btn-default') %>
+</div>

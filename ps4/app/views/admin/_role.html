@@ -1,0 +1,6 @@
+<td>
+  <%= link_to role.role_name, admin_role_path(role) %>
+</td>
+<td>
+  <%= link_to("Delete role", admin_role_path(role), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button-xs') unless role.role_name == 'Admin' %>
+</td>
