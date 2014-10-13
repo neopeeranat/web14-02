@@ -7,7 +7,7 @@
 
         <div class="row">
           <h3>Users</p></h3>
-          <div class="column col-md-9">
+          <div class="column col-md-8">
             <table class="table">
               <thead>
                 <tr class="info">
@@ -33,7 +33,7 @@
       <!-- <div class="container"> -->
         <div class="row">
           <h3>Roles</h3>
-          <div class="column col-md-9">
+          <div class="column col-md-8">
             <table class="table">
               <thead>
                 <tr class="info">
@@ -58,18 +58,25 @@
 
         <div class="row">
           <h3>Statistics on user registrations<h3>
-          <div class=" col-md-10">
+          <div class=" col-md-8">
             <%= line_chart User.group_by_day(:created_at, range: 1.weeks.ago.midnight..Time.now).count, library: {backgroundColor: "#eee"} %>
           </div>
         </div>
       </div>
     </div>
+    <div class="col-md-1">
+    </div>
     <div class="col-md-3">
-      <h3>Recent registered</h3>
+      <h3 class="">Recent registered</h3>
       <div class="list-group">
         <% (1..10).each do |i| %>
-        <a class="list-group-item" style="background-color:#eee" href="#">
-          User <%=i%>   Created at <%=DateTime.now.strftime("%d/%m/%Y")  %> 
+        <a class="list-group-item" style="background-color:#eee;"  href="#">
+          <h5 class="list-group-item-heading">
+             User <%=i%>
+          </h5>
+          <p class="list-group-item-text">
+             <h6>Created at <%=DateTime.now.strftime("%d/%m/%Y")  %></h6>
+          </p>
         </a>
         <% end %>
       </div>
