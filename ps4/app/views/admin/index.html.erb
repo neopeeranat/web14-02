@@ -75,17 +75,19 @@
       <h3 class="">Recent registered</h3>
       <div class="list-group">
         <% @users_recent.each do |users| %>
-
-       <!-- <a class="list-group-item" style="background-color:#eee;"  href="#">
-          <h5 class="list-group-item-heading">
-             User
-          </h5> -->
-          <p class="list-group-item-text">
-            <div class="recent">
-                <h6><%=users.email  %></h6>
-            </div>
-          </p>
-        </a>
+        <%= link_to(
+          content_tag('h5', users.email, class:"list-group-item-heading") + content_tag('p',content_tag('h6',users.created_at.strftime("%d/%m/%Y %H:%M")), class:"list-group-item-text"), '', class:"list-group-item", style:"background-color:#eee;")
+          %>
+        <!-- <a class="list-group-item" style="background-color:#eee;"  href="#">
+           <h5 class="list-group-item-heading">
+             <%=users.email  %>
+           </h5>
+           <p class="list-group-item-text">
+             <div class="recent">
+                 <h6><%=users.created_at.strftime("%d/%m/%Y %H:%M")  %></h6>
+             </div>
+           </p>
+         </a> -->
         <% end %>
       </div>
     </div>
@@ -93,4 +95,3 @@
 </div>
 <%#= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 </div>
-
