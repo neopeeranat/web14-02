@@ -10,7 +10,7 @@
       <div class="container">
 
         <div class="row">
-          <h3>Users</p></h3>
+          <h3><p>Users</p></h3>
           <div class="column col-md-8">
             <table class="table">
               <thead>
@@ -67,19 +67,23 @@
           </div>
         </div>
       </div>
+
     </div>
     <div class="col-md-1">
     </div>
     <div class="col-md-3">
       <h3 class="">Recent registered</h3>
       <div class="list-group">
-        <% (1..10).each do |i| %>
-        <a class="list-group-item" style="background-color:#eee;"  href="#">
+        <% @users_recent.each do |users| %>
+
+       <!-- <a class="list-group-item" style="background-color:#eee;"  href="#">
           <h5 class="list-group-item-heading">
-             User <%=i%>
-          </h5>
+             User
+          </h5> -->
           <p class="list-group-item-text">
-             <h6>Created at <%=DateTime.now.strftime("%d/%m/%Y")  %></h6>
+            <div class="recent">
+                <h6><%=users.email  %></h6>
+            </div>
           </p>
         </a>
         <% end %>
@@ -88,3 +92,5 @@
   </div>
 </div>
 <%#= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+</div>
+

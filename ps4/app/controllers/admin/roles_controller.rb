@@ -65,4 +65,5 @@ class Admin::RolesController < ApplicationController
     def secure_params
       params.require(:role).permit(:role)
     end
+
 end
