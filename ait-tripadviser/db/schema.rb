@@ -11,29 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141017102128) do
+ActiveRecord::Schema.define(version: 20141017183256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "directions", force: true do |t|
-    t.integer  "price"
-    t.integer  "placeid"
-    t.integer  "typeid"
-    t.integer  "destinationid"
+    t.integer  "origin_id"
+    t.integer  "destination_id"
+    t.integer  "transportation_id"
     t.integer  "user_id"
+    t.decimal  "price",             precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "places", primary_key: "placeid", force: true do |t|
+  add_index "directions", ["transportation_id"], name: "index_directions_on_transportation_id", using: :btree
+  add_index "directions", ["user_id"], name: "index_directions_on_user_id", using: :btree
+
+  create_table "places", force: true do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "transport_types", primary_key: "typeid", force: true do |t|
+  create_table "transportations", force: true do |t|
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "travel_modes", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -52,6 +61,7 @@ ActiveRecord::Schema.define(version: 20141017102128) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
