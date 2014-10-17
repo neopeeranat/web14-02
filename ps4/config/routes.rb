@@ -3,7 +3,11 @@ Rails.application.routes.draw do
 
 
   root 'home#index'
-  devise_for :users
+  devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
+
+  match 'admin/users/:id/finish_signup' => 'admin#users#finish_signup', via: [:get, :patch], :as => :finish_signup
+  get '/admin/users/finish_signup' => 'admin#users#finish_signup'
+
 
   get 'admin/' => 'admin#index', as: 'admin'
   namespace :admin do

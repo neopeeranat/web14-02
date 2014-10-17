@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  price: 1
+  reference: 
+  Place,: MyString
+  TransportType: MyString
+
+two:
+  price: 1
+  reference: 
+  Place,: MyString
+  TransportType: MyString
