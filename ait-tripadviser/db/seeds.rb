@@ -27,6 +27,6 @@ direction = Direction.find_or_create_by!(id: 1) do |direction|
   direction.origin = place1
   direction.destination = place2
   direction.transportation = trans
-  direction.user = user1
+  direction.created_by = user1
   direction.price = 543.21
 end
