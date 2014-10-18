@@ -1,6 +1,40 @@
+
+
+
+
+  <!-- <li><%= link_to 'Sign in', new_user_session_path %></li> -->
+
+
+<li class="<%= 'active '+params[:controller] if current_page?(root_path) %>"><%= link_to 'Home', root_path %></li>
+<li class="<%= 'active '+params[:controller] if current_page?(service_path) %>"><%= link_to 'Services', service_path %></li>
 <% if user_signed_in? %>
-  <li><%= link_to 'Edit account', edit_user_registration_path %></li>
-  <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+  <% if current_user.admin? %>
+    <li><%= link_to 'Admin', admin_root_path %></li>
+  <% end %>
+<% end %>
+<% if user_signed_in? %>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <span class="caret"></span></a>
+  <ul id="dropdown_login" class="dropdown-menu">
+    <li><%= link_to 'Edit account', edit_user_registration_path %></li>
+    <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+  </ul>
+</li>
+
 <% else %>
-  <li><%= link_to 'Sign in', new_user_session_path %></li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign In <span class="caret"></span></a>
+  <ul id="dropdown_login" class="dropdown-menu">
+    <li>
+      <!-- <form class="navbar-form" role="form">
+        <label for="user">Username</label>
+        <input type="text" class="form-control" placeholder="Username" />
+        <label for="password">Password</label>
+        <input type="password" class="form-control" placeholder="Password" />
+        <button id="btnLogin" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form> -->
+      <%= render "layouts/login" %>
+    </li>
+  </ul>
+</li>
 <% end %>

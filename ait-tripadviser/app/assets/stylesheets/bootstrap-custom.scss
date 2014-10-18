@@ -8,6 +8,60 @@
   }
 }
 
+@media (min-width: 768px) {
+    .omb_row-sm-offset-3 div:first-child[class*="col-"] {
+        margin-left: 25%;
+    }
+}
+.omb_loginOr {
+	position: relative;
+	font-size: 1.5em;
+	color: #aaa;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+.omb_loginOr .omb_hrOr {
+	background-color: #cdcdcd;
+	height: 1px;
+	margin-top: 0px !important;
+	margin-bottom: 0px !important;
+}
+.omb_loginOr .omb_spanOr {
+	display: block;
+	position: absolute;
+	left: 50%;
+	top: -0.6em;
+	margin-left: -1.5em;
+	background-color: whitesmoke;
+	width: 3em;
+	text-align: center;
+}
+
+.nav-form .right {
+  padding-right:0px !important;
+  padding-left:0px !important;
+  float: right !important;
+}
+.nav-form .left {
+  padding-left:0px !important;
+  padding-right:0px !important;
+  float: left !important;
+}
+.nav-form .btn-login {
+    background-color: #222;
+    border-color: #222;
+    color:white;
+    clear: left; width: 48%; height: 32px; font-size: 13px;
+}
+.nav-form .btn-signup {
+    background-color: #428bca;
+    border-color: #357ebd;
+    color:white;
+    clear: left; width: 48%; height: 32px; font-size: 13px;
+}
 //== Close
 //
 //##
@@ -15,3 +69,103 @@
 $close-font-weight:           bold !default;
 $close-color:                 #000 !default;
 $close-text-shadow:           0 1px 0 #fff !default;
+
+/* Wrapper for page content to push down footer */
+.wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by its height */
+  margin: 0 auto -60px;
+  /* Pad bottom by footer height */
+  padding: 0 0 60px;
+}
+
+
+/* ========== navbar ========== */
+.navbar-inverse {
+    border: none;
+}
+
+    .navbar-inverse .navbar-brand {
+        font-size: 18pt;
+    }
+
+    .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a {
+        color: #fff;
+    }
+
+    .navbar-inverse .navbar-nav a {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+/* ========== navbar-tab ========== */
+    .navbar-nav > li.active.home > a, .navbar-nav > li.active.home > a:hover,.navbar-nav > li.active.home > a:focus{
+      background-color: #83C421;
+    }
+    .navbar-nav > li.active.service > a, .navbar-nav > li.active.service > a:hover,.navbar-nav > li.active.service > a:focus{
+      background-color: #FFCC33;
+    }
+
+#dropdown_login {
+    width: 250px;
+    padding: 10px;
+}
+
+#btnLogin {
+    margin-top: 10px;
+}
+
+.navbar-wrapper .navbar {
+    border-radius: 0px;
+}
+
+/* ========== navbar ========== */
+
+/* ========== footer ========== */
+footer {
+    margin-top: 40px;
+    width: inherit;
+    text-align: center;
+    width: 100%;
+    height: 60px;
+    padding-top:20px;
+    padding-bottom:20px;
+}
+
+/* ========== footer ========== */
+
+/* ========== collapse ========== */
+.carousel {
+    margin-bottom: 0;
+}
+
+    .carousel .item {
+        height: 450px;
+    }
+
+.carousel-control.left, .carousel-control.right {
+    background: none;
+}
+/* ========== collapse ========== */
+
+/* ========== general ========== */
+// body > .container:nth-child(2) {
+//     padding-top: 60px;
+// }
+
+a {
+    color: #333;
+}
+
+.btn-primary {
+    background-color: #222;
+    border-color: #222;
+}
+
+.input-group-addon {
+    background-color: transparent;
+    border: none;
+}
+/* ========== general ========== */

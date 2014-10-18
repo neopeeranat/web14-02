@@ -30,7 +30,7 @@ gem 'spring',        group: :development
 gem 'composite_primary_keys'
 
 #This is for the style in our website
-gem 'bootstrap-generators'
+#gem 'bootstrap-generators'
 gem 'jquery-ui-rails'
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 gem 'will_paginate'

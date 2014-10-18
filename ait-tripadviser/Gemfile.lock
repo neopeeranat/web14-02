@@ -64,8 +64,6 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-generators (3.2.0)
-      railties (>= 3.1.0)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
     bootstrap_form (2.2.0)
@@ -302,7 +300,6 @@ DEPENDENCIES
   activeadmin!
   better_errors
   binding_of_caller
-  bootstrap-generators
   bootstrap-sass
   bootstrap_form
   capistrano-rails

@@ -1,4 +1,68 @@
-<div class="page-header">
-  <h1>Home#index</h1>
-</div>
-<p>Find me in app/views/home/index.html.erb</p>
+<!-- Carousel ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="item active">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>We are now ready!</h1>
+                        <p>
+                            In order to guide you the best path touring from AIT, we serve you "Intelligent Trip Advisor System",
+                            which can help to guide you to hang out any places where you never go. No more
+                            cheating from drivers, confusing with map and etc.
+                        </p>
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Join Us</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>How to use our system</h1>
+                        <p>
+                            Just click on the map where you wanna go or searching by the place's name.
+                            Then just fill the information about how to go there such as by bus, taxi
+                            or public car.
+                        </p>
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div>
+    <!-- /.carousel -->
+    <!-- Body ================================================== -->
+    <div class="container marketing">
+        <div class="page-header">
+            <h1>About Us</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <!-- <img class="img-circle" src="images/pic1.jpg" alt="" style="width: 140px; height: 140px;" /> -->
+                <%=image_tag 'pic1.jpg', class: 'img-circle', style: "width:140px; height:140px;" %>
+                <h2>Peeranat Sangkatumvong</h2>
+                <p>Member 1</p>
+                <p><a class="btn btn-lg btn-primary" href="#" role="button">View details &raquo;</a></p>
+            </div>
+            <div class="col-lg-4">
+                <!-- <img class="img-circle" src="images/pic2.jpg" alt="" style="width: 140px; height: 140px;" /> -->
+                <%=image_tag 'pic2.jpg', class: 'img-circle', style: "width:140px; height:140px;" %>
+                <h2>Siraj Muhammad</h2>
+                <p>Member 2</p>
+                <p><a class="btn btn-lg btn-primary" href="#" role="button">View details &raquo;</a></p>
+            </div>
+            <div class="col-lg-4">
+                <!-- <img class="img-circle" src="images/pic3.jpg" alt="" style="width: 140px; height: 140px;" /> -->
+                <%=image_tag 'pic3.jpg', class: 'img-circle', style: "width:140px; height:140px;" %>
+                <h2>Yemini Bajracharya</h2>
+                <p>Member 3</p>
+                <p><a class="btn btn-lg btn-primary" href="#" role="button">View details &raquo;</a></p>
+            </div>
+        </div>
+    </div>

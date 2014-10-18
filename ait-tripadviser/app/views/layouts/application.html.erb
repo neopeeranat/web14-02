@@ -2,19 +2,28 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Ait Trip Adviser" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Ait Trip Adviser" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "Ait Trip Advisor" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Ait Trip Advisor" %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <header>
-      <%= render 'layouts/navigation' %>
-    </header>
-    <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
-    </main>
+    <div class="wrap">
+      <header>
+        <%= render 'layouts/navigation' %>
+      </header>
+      <main role="main">
+        <div class="container">
+         <%= render 'layouts/messages' %>
+         <%= yield %>
+       </div>
+      </main>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; Copyright 2014 Web Application Engineering Group 2</p></div>
+      </div>
+    </footer>
   </body>
 </html>
