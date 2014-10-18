@@ -50,6 +50,7 @@ gem 'bootstrap_form'
 #Authentication
 gem 'devise'
 gem 'omniauth-facebook'
+gem 'activeadmin', github: 'activeadmin'
 
 group :development do
   gem 'better_errors'

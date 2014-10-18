@@ -10,6 +10,7 @@ user1 = User.find_or_create_by!(email: 'st116022@ait.ac.th') do |user|
   user.name = 'Peeranat'
   user.password = '11111111'
   user.password_confirmation = '11111111'
+  user.admin = true
 end
 
 trans = Transportation.find_or_create_by!(type: 'Taxi')
