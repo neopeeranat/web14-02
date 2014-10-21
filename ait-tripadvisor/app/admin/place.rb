@@ -1,6 +1,7 @@
 ActiveAdmin.register Place do
-
-
+  #default_actions :except => [:delete, :edit]
+  #actions :all, except: [:edit, :destroy, :show]
+  #default_actions
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -13,6 +14,10 @@ ActiveAdmin.register Place do
   #   permitted << :other if resource.something?
   #   permitted
   # end
-
-
+index do
+  #column :id
+  column :name
+  column :description
+  actions
+end
 end

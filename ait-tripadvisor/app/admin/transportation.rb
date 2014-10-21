@@ -24,6 +24,10 @@ ActiveAdmin.register Transportation do
   #   permitted << :other if resource.something?
   #   permitted
   # end
-
+  index do
+    column :id
+    column :type
+    actions
+  end
 
 end

@@ -7,4 +7,8 @@ class Place < ActiveRecord::Base
                        :class_name => 'Direction',
                        :dependent => :destroy
   has_many :origins, :through => :arrivals
+
+  def to_s
+    "#{name}"
+  end
 end
