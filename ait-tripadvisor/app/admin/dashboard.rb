@@ -9,7 +9,18 @@ ActiveAdmin.register_page "Dashboard" do
         small I18n.t("active_admin.dashboard_welcome.call_to_action")
       end
     end
+  section "User Statistics" do
+    table_for User.all do
+      column :id
+      column :email
+      column :created_at
+      column :updated_at
+      #actions
+    end
+    section "Graph for Users" do
 
+    end
+  end
 
 
 
