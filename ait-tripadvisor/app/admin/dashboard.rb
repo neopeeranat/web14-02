@@ -18,13 +18,14 @@ ActiveAdmin.register_page "Dashboard" do
       #actions
     end
     section "Graph for Users" do
-
-    end
+      div do
+        render "graph"
+        end
+        #var r = Raphael(10, 50, 640, 480);
+        #r.piechart(320, 240, 100, [55, 20, 13, 32, 5, 1, 2]);
+      end
   end
-
-
-
-    # Here is an example of a simple dashboard with columns and panels.
+     # Here is an example of a simple dashboard with columns and panels.
     #
     # columns do
     #   column do

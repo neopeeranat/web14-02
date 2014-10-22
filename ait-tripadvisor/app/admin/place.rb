@@ -1,4 +1,5 @@
 ActiveAdmin.register Place do
+  #has_many :driecions
   #default_actions :except => [:delete, :edit]
   #actions :all, except: [:edit, :destroy, :show]
   #default_actions
