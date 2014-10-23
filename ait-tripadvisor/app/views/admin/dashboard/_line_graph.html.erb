@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ChartKickExample</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag "http://www.google.com/jsapi", "chartkick" %>
+  <%= stylesheet_link_tag 'http://yandex.st/bootstrap/3.1.1/css/bootstrap.min.css' %>
+  <%= javascript_include_tag 'http://yandex.st/bootstrap/3.1.1/js/bootstrap.min.js' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<table>
+ <tr>
+   <td>
+     <div class="row">
+       <div class=".col-md-8">
+         <h3>Visiting Places in Thailand</h3>
+         <%= pie_chart Place.group(:name).count %>
+       </div>
+     </div>
+   </td>
+   <td>
+     <div class="row">
+       <!-- Line Chart - Single Series -->
+       <div class=".col-md-4">
+         <h3>Number of user created</h3>
+         <%= line_chart User.group(:created_at).count, discrete: true %>
+         <!--%= line_chart User.all, id: "users-chart" %-->
+       </div>
+     </div>
+  </td>
+ </tr>
+</table>
+
+<div class="container">
+  <%= yield %>
+</div>
+
+</body>
+</html>
