@@ -22,7 +22,7 @@
     <td>
        <div class=".col-xs-6">
          <h3>Number of user created</h3>
-         <%= line_chart User.group_by_day(:created_at).count.to_a.sort(), height: "200px", format: "dd/MM/yy" %>
+         <%= line_chart User.group_by_day(:created_at, range: 1.weeks.ago.midnight..Time.now).count.to_a.sort(), height: "200px", format: "dd/MM/yy" %>
        </div>
     </td>
   </tr>
