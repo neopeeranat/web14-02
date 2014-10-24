@@ -18,6 +18,11 @@ ActiveAdmin.register_page "Dashboard" do
       #actions
     end
   end
+  section "Visiting Places"
+    table_for Place.all do
+      column :id
+      column :name
+    end
    # section "Pai Graph" do
       #div do
         #render "pai_graph"
