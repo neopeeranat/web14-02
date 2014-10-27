@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-
-  resources :places do
-    get :autocomplete_places_name, :on => :collection
-  end
   get 'service/' => 'service#index'
 
   ActiveAdmin.routes(self)

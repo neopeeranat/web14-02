@@ -143,34 +143,3 @@ body {
         margin-top: 120px;
     }
 }
-
-.navbar-inverse
-{
-    font-family: "Comic Sans MS", cursive, sans-serif;
-    font-weight: 600;
-    background: red;
-    background-color: #a1aa40;
-
-
-
-
-    animation-name: myfirst;
-    animation-duration: 5s;
-    animation-timing-function: linear;
-    animation-delay: 2s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-play-state: running;
-}
-
-
-
-@keyframes myfirst {
-    0%   {background: hotpink;}
-    25%  {background: black;}
-    50%  {background: mediumpurple;}
-    100% {background: lightpink;}
-
-
-}
-
