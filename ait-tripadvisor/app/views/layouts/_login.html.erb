@@ -32,9 +32,9 @@
 
 
          <div class="form-group">
-           <%= link_to  content_tag(:i, '', class:'fa fa-facebook') +  'Sign in with Facebook' , '', id: "sign_in_facebook", class:"btn btn-sm btn-block btn-social btn-facebook" %>
-           <%= link_to  content_tag(:i, '', class:'fa fa-twitter') +  'Sign in with Twitter' , '', id: "sign_in_twitter", class:"btn btn-sm btn-block btn-social btn-twitter" %>
-           <%= link_to  content_tag(:i, '', class:'fa fa-google-plus') +  'Sign in with Google+' , '', id: "sign_in_google-plus", class:"btn btn-sm btn-block btn-social btn-google-plus" %>
+           <%= link_to  content_tag(:i, '', class:'fa fa-facebook') +  'Sign in with Facebook' , user_omniauth_authorize_path(:facebook), class:"btn btn-sm btn-block btn-social btn-facebook" %>
+           <%= link_to  content_tag(:i, '', class:'fa fa-twitter') +  'Sign in with Twitter' , user_omniauth_authorize_path(:twitter), id: "sign_in_twitter", class:"btn btn-sm btn-block btn-social btn-twitter" %>
+           <%= link_to  content_tag(:i, '', class:'fa fa-google-plus') +  'Sign in with Google+' , user_omniauth_authorize_path(:gplus), class:"btn btn-sm btn-block btn-social btn-google-plus" %>
          </div>
  <% end %>
 </div>

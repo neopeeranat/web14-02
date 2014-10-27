@@ -16,12 +16,7 @@
 //= require chartkick
 //require turbolinks
 //= require bootstrap-sprockets
-//= require_directory
-
-//= require autocomplete-rails
-
-
-
+//= require_directory .
 
 $(function () {
   $('body').css("background-color",$(".navbar-collapse ul li.active :first").css('background-color'))

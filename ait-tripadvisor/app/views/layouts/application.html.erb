@@ -6,6 +6,7 @@
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Ait Trip Advisor" %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
     <%= csrf_meta_tags %>
 
     <%= javascript_include_tag "autocomplete-rails" => true %>  <!% added this line -->
@@ -23,10 +24,16 @@
        </div>
       </main>
     </div>
+
+    <div class="container">
+
+    </div>
+
     <footer class="footer">
       <div class="container">
         <p>&copy; Copyright 2014 Web Application Engineering Group 2</p></div>
       </div>
     </footer>
+
   </body>
 </html>
