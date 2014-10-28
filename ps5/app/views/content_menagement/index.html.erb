@@ -1,23 +1,92 @@
 <body>
 <head>
 </head>
-  <h1 align="center">Content Management System</h1>
-  <table class="table" align = "center" >
+  <h4 align="center">Content of Ait-Tripadvisor System</h4>
+  <table class="master" align = "center" >
     <tr>
       <td>S. No </td>
       <td> Description </td>
     </tr>
     <tr>
       <td>Classification of Contents</td>
-      <td></td>
+      <td>
+        The content are divided into the following categories
+        <ol>
+          <li>Places</li>
+          <li>Transport Type</li>
+          <li>Directions (mean different routes)</li>
+          <li>User Registration</li>
+          <li>Comments</li>
+        </ol>
+        <ul>
+          <li>Places:- <br> <p> This is the model which specify the different picnic place. The model consist of different
+          fields including id, name of the place and description about the place. </p></li>
+          <li>Transport Type:- <br>
+          <p>This is the second model in our project. This model contain the different type of transport service to a particular place.
+            The model will contain the different fields including (id (primary key), transport type field which may take the value
+            including motor cycle, taxi or bus. </p></li>
+          <li>Directions :- <br><p>It is the third model include in our web site. This is important model because it will
+          contain the information about different routes. The model consist of different fields including id, origion_id, destination_id,
+          transportation_type, user_id and price. The id, origion_id, transporation_id, destination_id is keep as primary key. Transportaion_id and Origion_id is
+          foreign keys. we also include the user_id in this model because whenever the user punch some data about their trip and again want to edit the
+          data then he will only be able to edit the data which was punched by him.</p></li>
+          <li>User Registration:- <br> <p>This is the next model in our web cite. This is model will contain different field
+          including email, passward, and user_id. The model will be used whenever a particular user want to enter the
+          data about the trip. The model contain the facility that user can register him self from facebook, twitter etc. </p></li>
+          <li>Comments:- <br><p>We have provide facilities to the user who just want to enter the comment about the particular place
+          or want to enter his view point about the web cite. This model contain id, name, email and txt field for comments.</p></li>
+        </ul>
+      </td>
     </tr>
     <tr>
       <td>Content Data Model</td>
-      <td></td>
+      <td><table>
+        <tr>
+          <td><%= image_tag "Place.png" %> </td>
+          <td>Simple form will be provide to the user entering the name of the place</td>
+        </tr>
+        <tr>
+          <td><%= image_tag "Transportations.png" %></td>
+          <td>Here the user will provide a simple form for entering the data about transport
+          he used for their trip.</td>
+        </tr>
+        <tr>
+          <td><%= image_tag "Directions.png" %></td>
+          <td>Here the user will enter the data about the routes they used for their trip along with price
+          of the vehical he used.</td>
+        </tr>
+        <tr>
+          <td><%= image_tag "UserRegistration.png", alt: "User Registration Model" %></td>
+          <td>For the time being we have consider the student of AIT as user. They will register himself to the site and
+          will be able to enter the data. However the system is flexible where any one with valid email address, facebook id
+          or twitter id will enter the data.</td>
+        </tr>
+        <tr>
+          <td><%= image_tag "Qustions.png" %></td>
+          <td>In this model we have provide a simple form in which the user will enter his name, email address
+          and view point about the site or he may enter any qustion regarding their experience </td>
+        </tr>
+        </table></td>
     </tr>
     <tr>
       <td>Work flow of Each Content </td>
-      <td></td>
+      <td>
+        <ul>
+          <li> User Registration:-
+          <ol>
+            <li>Go to the registration Page</li>
+            <li>Enter the name, email, password and than click on sign up button</li>
+            <li>Or Loging from facebook, twitter etc.</li>
+          </ol>
+          </li>
+        </ul>
+
+        <br>
+        Flow for Place:-<br>
+        Transport Type:-<br>
+        Direction:-<br>
+        Comments/Questions Answer Forum:-<br>
+      </td>
     </tr>
     <tr>
       <td>Visioning System </td>
