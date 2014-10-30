@@ -8,8 +8,8 @@
     <th>
       <td>S. No </td>
       <td> Description </td>
-    </th>
-    <tr>
+    </tr>
+    <th>
       <td>Classification of Contents</td>
       <td>
         The content are divided into the following categories
@@ -58,7 +58,7 @@
         <tr>
           <td><%= image_tag "Directions.png" %></td>
           <td>Here the user will enter the data about the routes they used for their trip along with price
-          of the vehical he used.  In this model we have added user_id field. Whenever the user wants to change
+          of the vehicle he used.  In this model we have added user_id field. Whenever the user wants to change
             the record he enter, he will be able the record that he is punched. He will not be capable to change the
             data or record of other user.</td>
         </tr>
@@ -131,9 +131,35 @@
     </tr>
     <tr>
       <td>Skeletal Implementation of work flow</td>
-      <td></td>
-    </tr>
+      <td>Our homepage contains 3 main links on the navigation bar namely home, services and sign in.
+        The homepage also shows details about the developers with their profile picture along with a footer.
+        Using bootstrap features the web page is  made more beautiful and attractive
+        <%= image_tag "services.jpg" %>
 
+
+       </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>The link to services directs to the page where any user can enter the name of the places that is available in
+        the database and click on the button to which mode of transport they want to use.
+        Upon clicking the analyze button, information of the place with the price details and duration is provided.
+        We also plan on providing a Google map in the future.
+        The destination field has an auto complete feature so that it becomes easier for the user to choose from.
+
+        <%= image_tag "signin.jpg", align: "center" %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>The user can sign in from a number of ways. They can use their own email and password they created while
+        signing up or use Facebook, Twitter or Google+ accounts.This was possible using their respective gem files.
+
+        This is the section where a user after signing in can edit his/her information using his current password
+        to make the update successful. Furthermore, we plan on adding a feature where the user can also be able to
+        add the destination, price and duration which will be stored in our database and can be viewable to anyone.
+        <%= image_tag "edit.jpg" %>
+      </td>
+    </tr>
   </table>
 </div>
 </body>
