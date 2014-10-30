@@ -41,3 +41,6 @@ gem 'capistrano-rails'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+#for run rails on windows
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
