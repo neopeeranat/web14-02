@@ -45,17 +45,22 @@
       <td><table>
         <tr>
           <td><%= image_tag "Place.png" %> </td>
-          <td>Simple form will be provide to the user entering the name of the place</td>
+          <td>Simple form will be provide to the user entering the name of the place. The description field will contain
+          information about place. These information will be displayed to the user when he search for some routes/ directions.
+          This information will guide the user what to do next like go the main gate of AIT from where you will find the taxi.</td>
         </tr>
         <tr>
           <td><%= image_tag "Transportations.png" %></td>
           <td>Here the user will provide a simple form for entering the data about transport
-          he used for their trip.</td>
+          he used for their trip. For the time being we will target the taxi, bus or moter cycle. In future we will
+          add the necessary implementation for other resources as well</td>
         </tr>
         <tr>
           <td><%= image_tag "Directions.png" %></td>
           <td>Here the user will enter the data about the routes they used for their trip along with price
-          of the vehical he used.</td>
+          of the vehical he used.  In this model we have added user_id field. Whenever the user wants to change
+            the record he enter, he will be able the record that he is punched. He will not be capable to change the
+            data or record of other user.</td>
         </tr>
         <tr>
           <td><%= image_tag "UserRegistration.png", alt: "User Registration Model" %></td>
