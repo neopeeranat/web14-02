@@ -1,0 +1,32 @@
+<%= form_for [:service, @direction] do |f| %>
+  <% if @direction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@direction.errors.count, "error") %> prohibited this direction from being saved:</h2>
+
+      <ul>
+      <% @direction.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <h4>From AIT</h4>
+  </div>
+  <div class="field">
+    <%= f.label :destination_id %><br>
+    <%= f.text_field :destination_id %>
+    <%= link_to 'New Place', new_service_place_path %>
+  </div>
+  <div class="field">
+    <%= f.label :transportation_id %><br>
+    <%= f.select :transportation_id, options_from_collection_for_select(Transportation.all, "id", "type", @direction.transportation_id) %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.number_field :price %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
