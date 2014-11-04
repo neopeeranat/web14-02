@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 20141025185243) do
 
   add_index "directions", ["transportation_id"], name: "index_directions_on_transportation_id", using: :btree
   add_index "directions", ["user_id"], name: "index_directions_on_user_id", using: :btree
+  add_index "directions", ["origin_id", "destination_id", "transportation_id", "user_id"], name: "index_directions_unique", :unique => true
+
 
   create_table "places", force: true do |t|
     t.string   "name"

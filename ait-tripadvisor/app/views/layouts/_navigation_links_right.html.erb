@@ -6,7 +6,7 @@
 
 
 <li class="<%= 'active home' if current_page?(root_path) %>"><%= link_to 'Home', root_path %></li>
-<li class="<%= 'active service' if (current_page?(service_path) || current_page?(new_service_direction_path) || current_page?(new_service_place_path) )  %>"><%= link_to 'Services', service_path %></li>
+<li class="<%= 'active service' if params[:controller] == 'service' || params[:controller] == 'service/directions'|| params[:controller] == 'service/places'  %>"><%= link_to 'Services', service_path %></li>
 <% if user_signed_in? %>
   <% if current_user.admin? %>
     <li><%= link_to 'Admin', admin_root_path %></li>

@@ -6,15 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-user1 = User.find_or_create_by!(email: 'msiraj83@gmail.com') do |user|
-  user.name = 'siraj'
+user1 = User.find_or_create_by!(email: 'st116022@ait.ac.th') do |user|
+  user.name = 'Peeranat'
   user.password = '11111111'
   user.password_confirmation = '11111111'
   user.admin = true
 end
 
-user2 = User.find_or_create_by!(email: 'st116022@ait.ac.th') do |user|
-  user.name = 'Peeranat'
+user2 = User.find_or_create_by!(email: 'msiraj83@gmail.com') do |user|
+  user.name = 'siraj'
   user.password = '11111111'
   user.password_confirmation = '11111111'
   user.admin = true
@@ -32,10 +32,6 @@ place2 = Place.find_or_create_by!(name: 'Siam Park') do |place|
   place.description = 'Amusement'
 end
 
-direction = Direction.find_or_create_by!(id: 1) do |direction|
-  direction.origin = place1
-  direction.destination = place2
-  direction.transportation = trans
-  direction.created_by = user1
+direction = Direction.find_or_create_by!(origin: place1, destination: place2, transportation: trans, created_by: user1) do |direction|
   direction.price = 543.21
 end

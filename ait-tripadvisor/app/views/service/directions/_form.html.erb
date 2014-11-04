@@ -4,7 +4,7 @@
       <h2><%= pluralize(@direction.errors.count, "error") %> prohibited this direction from being saved:</h2>
 
       <ul>
-      <% @direction.errors.full_messages.each do |message| %>
+      <% @direction.errors.each do |attribute, message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
