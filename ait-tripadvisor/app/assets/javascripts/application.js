@@ -16,6 +16,7 @@
 //= require chartkick
 //require turbolinks
 //= require bootstrap-sprockets
+//= require jquery.tokeninput
 //= require_directory .
 
 $(function () {

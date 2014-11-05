@@ -5,29 +5,13 @@ class Service::PlacesController < ApplicationController
   # GET /places.json
   def index
 
-    #hide all place in session[:hide_id]
-    if session[:hide_id].nil?
-      @places = Place.all
-    else
-      @places = Place.where.not(id: session[:hide_id])
-    end
-
-    #After filter by session[:hide_id], search by check in quote and author columns
-    if !params[:search].blank?
-      @places = @places.search(params[:search])
-      @search = params[:search]
-    end
+    @places = (params[:q].blank?)? Place.all : Place.where("name ilike ?", "%#{params[:q]}%")
 
     respond_to do |format|
-      format.html #index.html.erb
+      #format.html #index.html.erb
       format.json { render json: @places }
       format.xml { render :xml => @places }
     end
-  end
-
-  def search
-    @places = Place.where('quote LIKE ?', '%#{params[:q]}%')
-    redirect_to :back
   end
 
   # GET /places/1

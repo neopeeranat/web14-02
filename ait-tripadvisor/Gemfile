@@ -42,11 +42,14 @@ gem 'bootstrap_form'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-#For line, pai,, graph
+#For line, pi,, graph
 gem "chartkick"
 gem 'groupdate'
 #gem "activerecord-jdbcpostgresql-adapter", :github => "jruby/activerecord-jdbc-adapter"
 
+
+#auto complete
+gem 'jquery-tokeninput-rails'
 # Use unicorn as the app server
 # gem 'unicorn'
 
