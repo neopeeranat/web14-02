@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141025185243) do
+ActiveRecord::Schema.define(version: 20141106061424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,12 +39,11 @@ ActiveRecord::Schema.define(version: 20141025185243) do
     t.decimal  "price",             precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
   end
 
   add_index "directions", ["transportation_id"], name: "index_directions_on_transportation_id", using: :btree
   add_index "directions", ["user_id"], name: "index_directions_on_user_id", using: :btree
-  add_index "directions", ["origin_id", "destination_id", "transportation_id", "user_id"], name: "index_directions_unique", :unique => true
-
 
   create_table "places", force: true do |t|
     t.string   "name"
