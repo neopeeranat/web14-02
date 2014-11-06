@@ -5,19 +5,26 @@
   <div class="col-lg-6 text-center">
     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3870.021359973115!2d100.617133!3d14.075915999999998!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e27f8de68c7f59%3A0xf01923824353270!2sAsian+Institute+of+Technology!5e0!3m2!1sen!2sth!4v1409322599334" width="480" height="300" style="border-style: none;"></iframe>
   </div>
+  <%=form_tag("search") do  %>
   <div class="col-lg-6">
     <div class="row">
-      <div class="col-lg-3">Desination: </div>
+      <div class="col-lg-3">Destination: </div>
       <div class="col-lg-9">
-        <input type="text" class="form-control" placeholder="Define your destination..." />
+          <%= text_field_tag(:txtDestination) %>
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-3">Transportation: </div>
+      <div class="col-lg-3">Search your Result: </div>
       <div class="col-lg-9">
         <div class="input-group">
-          <span class="input-group-addon">
-            <input type="radio" value="1" />
+          <%=collection_select(:transportation, :id, Transportation.all, :id, :type, prompt: true) %>
+          <%=button_to 'Search', action: "search", from_class: "btn btn-lg btn-primary" %>
+          </div>
+        </div>
+      </div>
+
+          <!--span class="input-group-addon">
+            <input id ="bus" type="radio" value="1" />
           </span>
           Public Bus
         </div>
@@ -27,9 +34,9 @@
           </span>
           University Van
         </div> -->
-        <div class="input-group">
+        <!--div class="input-group">
           <span class="input-group-addon">
-            <input type="radio" value="3" />
+            <input id="taxi" type="radio" value="3" />
           </span>
           Car, Taxi, and etc.
         </div>
@@ -47,12 +54,14 @@
         <input type="time" class="form-control" placeholder="End time..." />
       </div>
     </div> -->
-    <div class="row">
+    <!--div class="row">
       <div class="col-lg-12 text-right">
         <br />
-        <button id="btnSubmit" class="btn btn-lg btn-primary" type="submit">Analyze</button>
+        <!--%=button_to 'Analyze', action: "search", from_class: "btn btn-lg btn-primary" %>
       </div>
-    </div>
+    </div-->
+
+
     <% if user_signed_in? %>
     <div class="row">
       <div class="col-lg-12 text-center">
@@ -60,6 +69,7 @@
       </div>
     </div>
     <% end %>
-  </div>
 
+  </div>
+  <% end %>
 </div>
