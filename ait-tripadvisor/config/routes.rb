@@ -23,8 +23,9 @@ Rails.application.routes.draw do
     resources :directions
     resources :places
   end
-  match '/search' => 'service#search', :as => 'search', via: [:get, :post]
 
+  match '/search' => 'service#search', via: [:get, :post]
+  match '/details' => "service#details", via: [:get, :post]
 
 
   #Admin

@@ -18,7 +18,22 @@ ActiveAdmin.register Direction do
     actions
   end
   controller do
-    actions :all, :except => [:delete] # you can decide which all methods to be shown in show page.
+    def create
+      @direction = Direction.create(permit_params)
+      @direction.save
+      redirect_to admin_direction_path(@direction)
+    end
+    def update
+      @direction = Direction.find(params[:id])
+      @direction.update(permit_params)
+      redirect_to admin_direction_path(@direction)
+    end
+    def validations
+      Direction.create(:name).valid?
+    end
+    def permit_params
+      params.require(:direction).permit(:origin_id, :destination_id, :transportation_id, :user_id, :price, :description)
+    end
   end
 
 end
