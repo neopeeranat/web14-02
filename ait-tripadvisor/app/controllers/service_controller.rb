@@ -4,7 +4,7 @@ class ServiceController < ApplicationController
    #@dists = Place.first.description
   end
   def details
-
+    @route = Direction.find(params[:id])
   end
   def search
     #@dists = Place.where("name like ?%#{params[:txtDestination]}%")

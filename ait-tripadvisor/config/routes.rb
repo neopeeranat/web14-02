@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   end
 
   match '/search' => 'service#search', via: [:get, :post]
-  match '/details' => "service#details", via: [:get, :post]
+  match '/details/:id' => "service#details", via: [:get, :post], as: 'details'
 
 
   #Admin

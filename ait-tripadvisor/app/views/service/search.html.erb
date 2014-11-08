@@ -15,7 +15,7 @@
                 <td><%= @dists.name %></td>
                 <td><%= Transportation.find(route.transportation_id).type %></td>
                 <td><%= route.price %></td>
-                <td><%=link_to 'Detail', details_path, route %> </td>
+                <td><%=link_to 'Detail', details_path(route) %> </td>
               </tr>
           <% end %>
         </table>

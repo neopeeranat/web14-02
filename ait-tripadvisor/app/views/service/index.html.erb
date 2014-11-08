@@ -1,21 +1,14 @@
-
 <div class="container">
-
-<div class="page-header">
-  <h1>Our Suggested Ways</h1>
-</div>
-<div class="row">
-  <div class="col-lg-6 text-center" id="routes">
-    <!--iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3870.021359973115!2d100.617133!3d14.075915999999998!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e27f8de68c7f59%3A0xf01923824353270!2sAsian+Institute+of+Technology!5e0!3m2!1sen!2sth!4v1409322599334" width="480" height="300" style="border-style: none;"></iframe-->
-   <% if !@directions.nil? %>
-     <%= render 'search' %>
-   <% end %>
+  <div class="page-header">
+    <h1>Our Suggested Ways</h1>
   </div>
   <div class="row">
-    <div class="col-lg-6 text-center">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3870.021359973115!2d100.617133!3d14.075915999999998!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e27f8de68c7f59%3A0xf01923824353270!2sAsian+Institute+of+Technology!5e0!3m2!1sen!2sth!4v1409322599334" width="480" height="300" style="border-style: none;"></iframe>
+    <div class="col-lg-6 text-center" id="routes">
+      <!--iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3870.021359973115!2d100.617133!3d14.075915999999998!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e27f8de68c7f59%3A0xf01923824353270!2sAsian+Institute+of+Technology!5e0!3m2!1sen!2sth!4v1409322599334" width="480" height="300" style="border-style: none;"></iframe-->
+     <% if !@directions.nil? %>
+       <%= render 'search' %>
+     <% end %>
     </div>
-
     <%=form_tag("search") do  %>
     <div class="col-lg-6">
       <div class="row">
@@ -29,7 +22,7 @@
         <div class="col-lg-9">
           <div class="input-group">
             <%=collection_select(:transportation, :id, Transportation.all, :id, :type, prompt: true) %>
-            <%=button_to 'Search', action: "search", from_class: "btn btn-lg btn-primary" %>
+            <%=button_to 'Search', action: "search", from_class: "btn btn-lg btn-primary", remote: true %>
             </div>
           </div>
         </div>
@@ -84,4 +77,5 @@
     </div>
     <% end %>
   </div>
+
 </div>
