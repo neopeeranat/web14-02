@@ -1,22 +1,36 @@
 Rails.application.routes.draw do
-  get 'service/' => 'service#index'
 
-  ActiveAdmin.routes(self)
   root 'home#index'
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }, :skip => [:sessions]
 
+
+  #User Management
+  get 'users' => 'users#index'
+  get 'users/directions'=> 'users#directions'
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" ,:registrations => "users/registrations"}, :skip => [:sessions]
+  # devise_for :users, :controllers => {  }
   devise_scope :user do
     get "/login" => "devise/sessions#new" , :as => :new_user_session
     post '/login' => 'devise/sessions#create', :as => :user_session
     delete "/logout" => "devise/sessions#destroy", :as => :destroy_user_session
   end
+  namespace :users do
+    resources :directions, only: [:show, :edit, :update, :destroy]
+  end
 
+  #Service
+  get 'service/' => 'service#index'
   namespace :service do
     resources :directions
     resources :places
   end
-
   match '/search' => 'service#search', :as => 'search', via: [:get, :post]
+
+
+
+  #Admin
+  ActiveAdmin.routes(self)
+
+
 
   # devise_scope :user do
   #   get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Ait Trip Advisor" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Ait Trip Advisor" %>">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+
+      <header>
+        <%= render 'layouts/navigation' %>
+      </header>
+
+      <main role="main">
+          <div class="row">
+              <div class="sidebar col-md-2 ">
+                <ul class="nav nav-sidebar">
+                  <li class="<%= 'active' if current_page?(users_path) %>"><%= link_to 'Overview', users_path%></li>
+                  <li class="<%= 'active' if current_page?(edit_user_registration_path) %>"><%= link_to 'Edit account', edit_user_registration_path %>
+                  <li class="<%= 'active' if current_page?(users_directions_path) || params[:controller] == 'users/directions' %>"><%= link_to 'Directions', users_directions_path %>
+                </ul>
+              </div>
+              <div class="main col-md-10 col-md-offset-2">
+
+                   <%= render 'layouts/messages' %>
+                   <%= yield %>
+                </main>
+              </div>
+          </div>
+      </main>
+
+
+    <footer class="footer">
+      <%= render 'layouts/footer' %>
+    </footer>
+
+  </body>
+</html>
