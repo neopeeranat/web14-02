@@ -29,5 +29,19 @@ ActiveAdmin.register Transportation do
     column :type
     actions
   end
-
+ controller do
+   def create
+     @transport = Transportation.new(permit_params)
+     @transport.save
+     redirect_to admin_transportation_path(@transport)
+   end
+   def update
+     @transport = Transportation.find(params[:id])
+     @transport.update(permit_params)
+     redirect_to admin_transportation_path(@transport)
+   end
+   def permit_params
+     params.require(:transportation).permit(:type)
+   end
+ end
 end
