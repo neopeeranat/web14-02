@@ -12,6 +12,11 @@ ActiveAdmin.register Direction do
   #   permitted << :other if resource.something?
   #   permitted
   # end
+  sidebar 'Directions', :only => :show do
+    table_for Driection.joins(:transportation).where(:transportation_id => :transportation.id) do |t|
+      #t.column("type") { |tranport| tranport.type }
+    end
+  end
   index do
     column :id
     column :price

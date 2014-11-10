@@ -10,10 +10,22 @@ index do
   actions
 end
 controller do
+  def validates(place)
+    if(place.name.nil?)
+      flash[:name] = "Please enter the name entry"
+    end
+    else if(place.description.nil?)
+           flash[:notice] = "Enter the description for place please"
+         end
+  end
   def create
     @place = Place.new(permit_params)
-    @place.save
-    redirect_to admin_place_path(@place)
+    if @place.save
+      redirect_to admin_place_path(@place)
+    else
+      flash[:notice]="Enter the name and description for the place"
+      redirect_to new_admin_place_path
+    end
   end
   def update
     @place = Place.find(params[:id])

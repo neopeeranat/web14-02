@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
 
   match '/search' => 'service#search', via: [:get, :post]
-  match '/details' => "service#details", via: [:get, :post]
+  match 'service/details' => "service#details", via: [:get, :post]
 
   # devise_scope :user do
   #   get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
