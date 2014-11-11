@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   root 'home#index'
-
+  get 'home/peeranatdetail' => 'home#peeranatdetail'
+  get 'home/sirajdetail' => 'home#sirajdetail'
+  get 'home/yeminidetail' => 'home#yeminidetail'
 
   #User Management
   get 'users' => 'users#index'
