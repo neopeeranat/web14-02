@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="page-header">
+    <h1>Direction detail</h1>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <td>Origin:</td>
+        <td><%= @direction.origin%></td>
+      </tr>
+      <tr>
+        <td>Destination:</td>
+        <td><%= @direction.destination%></td>
+      </tr>
+      <tr>
+        <td>Price:</td>
+        <td><%= @direction.price%></td>
+      </tr>
+      <tr>
+        <td>Description:</td>
+        <td><%= @direction.description%></td>
+      </tr>
+    </thead>
+  </table>
+
+  <%= link_to '<< Back', users_directions_path %>
+</div>

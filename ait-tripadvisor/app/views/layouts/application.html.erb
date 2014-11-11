@@ -10,26 +10,20 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div class="wrap">
-      <header>
-        <%= render 'layouts/navigation' %>
-      </header>
-      <main role="main">
-        <div class="container">
-         <%= render 'layouts/messages' %>
-         <%= yield %>
-       </div>
-      </main>
-    </div>
 
-    <div class="container">
+    <header>
+      <%= render 'layouts/navigation' %>
+    </header>
 
-    </div>
+    <main role="main-fluid">
+      <!-- <div class="container"> -->
+       <%= render 'layouts/messages' %>
+       <%= yield %>
+     <!-- </div> -->
+    </main>
 
     <footer class="footer">
-      <div class="container">
-        <p>&copy; Copyright 2014 Web Application Engineering Group 2</p></div>
-      </div>
+      <%= render 'layouts/footer' %>
     </footer>
 
   </body>

@@ -1,0 +1,25 @@
+<% if !@directions.nil? %>
+    <div class="container">
+      <div>
+        <h4 align="center">The Origin of the Picnic will be AIT </h4>
+        <h5 align="center"> <!--%= @dists.description %--></h5>
+        <table class ="table" align="center">
+          <tr>
+            <th>Destination</th>
+            <th>Transport Type</th>
+            <th>Price</th>
+            <th>Detail</th>
+          </tr>
+          <% @directions.each  do |route| %>
+              <tr>
+                <td><%= @dists.name %></td>
+                <td><%= @type.type%> <!--%= Transportation.find(route.transportation_id).type %--></td>
+                <td><%= route.price %></td>
+                <td><%=link_to 'Detail', service_details_path(route,@type) %> </td>
+              </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+<h5 align="left"><%= link_to "Back", service_path %></h5>
+<% end %>

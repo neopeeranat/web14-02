@@ -34,8 +34,13 @@ ActiveAdmin.register Transportation do
  controller do
    def create
      @transport = Transportation.new(permit_params)
-     @transport.save
-     redirect_to admin_transportation_path(@transport)
+     if @transport.save
+        redirect_to admin_transportation_path(@transport)
+     else
+       flash[:notice] = "Please enter the type for transport"
+       redirect_to new_admin_traportation_path
+     end
+
    end
    def update
      @transport = Transportation.find(params[:id])

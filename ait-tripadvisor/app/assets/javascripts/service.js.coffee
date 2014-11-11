@@ -3,4 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
+
   $('#txtDestination').tokenInput '/service/places.json', crossDomain: false, tokenLimit: 1;
+  if $('#txtDestination').data('name')
+    $('#txtDestination').tokenInput "add", id: $('#txtDestination')[0].defaultValue, name: $('#txtDestination').data('name') ;

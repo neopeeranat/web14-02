@@ -1,78 +1,91 @@
-<div class="page-header">
-  <h1>Our Suggested Ways</h1>
-</div>
-<div class="row">
-  <div class="col-lg-6 text-center" id="routes">
-    <!--iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3870.021359973115!2d100.617133!3d14.075915999999998!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e27f8de68c7f59%3A0xf01923824353270!2sAsian+Institute+of+Technology!5e0!3m2!1sen!2sth!4v1409322599334" width="480" height="300" style="border-style: none;"></iframe-->
-   <% if !@directions.nil? %>
-     <%= render 'search' %>
-   <% end %>
+<div class="container">
+  <div class="page-header">
+    <h1>Our Suggested Ways</h1>
   </div>
-  <%=form_tag("search") do  %>
-  <div class="col-lg-6">
-    <div class="row">
-      <div class="col-lg-3">Destination: </div>
-      <div class="col-lg-9">
-          <%= text_field_tag(:Destination) %>
-      </div>
+
+  <!--<%#=form_tag("search") do  %>-->
+  <!--<div class="col-lg-6">-->
+    <!--<div class="row">-->
+      <!--<div class="col-lg-3">Destination: </div>-->
+      <!--<div class="col-lg-9">-->
+          <!--<%#= text_field_tag(:txtDestination) %>-->
+      <!--</div>-->
+
+  <div class="row">
+    <div class="col-lg-6 text-center" id="routes">
+      <!--iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3870.021359973115!2d100.617133!3d14.075915999999998!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e27f8de68c7f59%3A0xf01923824353270!2sAsian+Institute+of+Technology!5e0!3m2!1sen!2sth!4v1409322599334" width="480" height="300" style="border-style: none;"></iframe-->
+     <% if !@directions.nil? %>
+       <%= render 'search' %>
+     <% end %>
+
     </div>
-    <div class="row">
-      <div class="col-lg-3">Search your Result: </div>
-      <div class="col-lg-9">
-        <div class="input-group">
-          <%=collection_select(:transportation, :id, Transportation.all, :id, :type, prompt: true) %>
-          <%=button_to 'Search', action: "search", from_class: "btn btn-lg btn-primary", remote: true %>
+    <%=form_tag("search") do  %>
+    <div class="col-lg-6">
+      <div class="row">
+        <div class="col-lg-3">Destination: </div>
+        <div class="col-lg-9">
+            <%= text_field_tag(:txtDestination) %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3">Search your Result: </div>
+        <div class="col-lg-9">
+          <div class="input-group">
+            <%=collection_select(:transportation, :id, Transportation.all, :id, :type, prompt: true) %>
+            <%=button_to 'Search', action: "search", class:"glyphicon glyphicon-pencil" %>
+            </div>
+          </div>
+        </div>
+
+            <!--span class="input-group-addon">
+              <input id ="bus" type="radio" value="1" />
+            </span>
+            Public Bus
+          </div>
+          <!-- <div class="input-group">
+            <span class="input-group-addon">
+              <input type="radio" value="2" />
+            </span>
+            University Van
+          </div> -->
+          <!--div class="input-group">
+            <span class="input-group-addon">
+              <input id="taxi" type="radio" value="3" />
+            </span>
+            Car, Taxi, and etc.
           </div>
         </div>
       </div>
-
-          <!--span class="input-group-addon">
-            <input id ="bus" type="radio" value="1" />
-          </span>
-          Public Bus
+      <!-- <div class="row">
+        <div class="col-lg-3">Time: </div>
+        <div class="col-lg-4">
+          <input type="time" class="form-control" placeholder="Begin time..." />
         </div>
-        <!-- <div class="input-group">
-          <span class="input-group-addon">
-            <input type="radio" value="2" />
-          </span>
-          University Van
-        </div> -->
-        <!--div class="input-group">
-          <span class="input-group-addon">
-            <input id="taxi" type="radio" value="3" />
-          </span>
-          Car, Taxi, and etc.
+        <div class="col-lg-1 text-center">
+          -
+        </div>
+        <div class="col-lg-4">
+          <input type="time" class="form-control" placeholder="End time..." />
+        </div>
+      </div> -->
+      <!--div class="row">
+        <div class="col-lg-12 text-right">
+          <br />
+          <!--%=button_to 'Analyze', action: "search", from_class: "btn btn-lg btn-primary" %>
+        </div>
+      </div-->
+
+
+      <% if user_signed_in? %>
+      <div class="row">
+        <div class="col-lg-12 text-center">
+            <%=link_to 'New Direction', new_service_direction_path, class:"btn btn-info" %>
         </div>
       </div>
-    </div>
-    <!-- <div class="row">
-      <div class="col-lg-3">Time: </div>
-      <div class="col-lg-4">
-        <input type="time" class="form-control" placeholder="Begin time..." />
-      </div>
-      <div class="col-lg-1 text-center">
-        -
-      </div>
-      <div class="col-lg-4">
-        <input type="time" class="form-control" placeholder="End time..." />
-      </div>
-    </div> -->
-    <!--div class="row">
-      <div class="col-lg-12 text-right">
-        <br />
-        <!--%=button_to 'Analyze', action: "search", from_class: "btn btn-lg btn-primary" %>
-      </div>
-    </div-->
+      <% end %>
 
-
-    <% if user_signed_in? %>
-    <div class="row">
-      <div class="col-lg-12 text-center">
-          <%=link_to 'New Direction', new_service_direction_path, class:"btn btn-info" %>
-      </div>
     </div>
     <% end %>
-
   </div>
-  <% end %>
+
 </div>

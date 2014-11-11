@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141106061424) do
+ActiveRecord::Schema.define(version: 20141108201704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20141106061424) do
     t.text     "description"
   end
 
+  add_index "directions", ["origin_id", "destination_id", "transportation_id", "user_id"], name: "index_directions_unique", unique: true, using: :btree
   add_index "directions", ["transportation_id"], name: "index_directions_on_transportation_id", using: :btree
   add_index "directions", ["user_id"], name: "index_directions_on_user_id", using: :btree
 
