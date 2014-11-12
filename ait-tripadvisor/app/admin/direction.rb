@@ -1,4 +1,5 @@
 ActiveAdmin.register Direction do
+  batch_action :destroy, false
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -12,11 +13,13 @@ ActiveAdmin.register Direction do
   #   permitted << :other if resource.something?
   #   permitted
   # end
+=begin
   sidebar 'Directions', :only => :show do
     table_for Driection.joins(:transportation).where(:transportation_id => :transportation.id) do |t|
       #t.column("type") { |tranport| tranport.type }
     end
   end
+=end
   index do
     column :id
     column :price
@@ -25,8 +28,12 @@ ActiveAdmin.register Direction do
   controller do
     def create
       @direction = Direction.create(permit_params)
-      @direction.save
-      redirect_to admin_direction_path(@direction)
+      if @direction.save
+         redirect_to admin_direction_path(@direction)
+      else
+        flash[:notice] = "Please enter the Required Information"
+        redirect_to new_admin_direction_path
+      end
     end
     def update
       @direction = Direction.find(params[:id])

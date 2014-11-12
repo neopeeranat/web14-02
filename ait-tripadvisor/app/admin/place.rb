@@ -1,7 +1,5 @@
 ActiveAdmin.register Place do
-  #validates :name, :descriptions
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
+  batch_action :destroy, false
 
 index do
   column :id
@@ -9,6 +7,12 @@ index do
   column :description
   actions
 end
+
+ filter :origins
+ filter :destinations
+ filter :name
+ filter :description
+
 controller do
   def validates(place)
     if(place.name.nil?)
