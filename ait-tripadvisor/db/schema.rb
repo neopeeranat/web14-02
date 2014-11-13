@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
   # These are extensions that must be enabled in order to support this database
+ActiveRecord::Schema.define(version: 20141112155754) do
   enable_extension "plpgsql"
 
   create_table "active_admin_comments", force: true do |t|
