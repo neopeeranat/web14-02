@@ -17,10 +17,9 @@ controller do
   def validates(place)
     if(place.name.nil?)
       flash[:name] = "Please enter the name entry"
-    end
-    else if(place.description.nil?)
+    elsif(place.description.nil?)
            flash[:notice] = "Enter the description for place please"
-         end
+    end
   end
   def create
     @place = Place.new(permit_params)

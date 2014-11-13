@@ -19,7 +19,7 @@ class ServiceController < ApplicationController
         #@directions = Direction.find_by_sql("select * from directions where destination_id=#{@dists.id}")
         @directions = Direction.where(destination_id: @dists.id)
         render :display
-      else if params[:txtDestination].nil?
+      elsif params[:txtDestination].nil?
         @dists = Place.find(params[:id])
         @type = Transportation.find(params[:type])
         #@directions = Direction.find_by_sql("select * from directions where destination_id=#{@dists.id}")

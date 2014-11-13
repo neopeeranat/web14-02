@@ -10,8 +10,10 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
+
+ActiveRecord::Schema.define(version: 20141113045442) do
+
   # These are extensions that must be enabled in order to support this database
-ActiveRecord::Schema.define(version: 20141112155754) do
   enable_extension "plpgsql"
 
   create_table "active_admin_comments", force: true do |t|
@@ -56,12 +58,6 @@ ActiveRecord::Schema.define(version: 20141112155754) do
 
   create_table "transportations", force: true do |t|
     t.string   "type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "travel_modes", force: true do |t|
-    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
