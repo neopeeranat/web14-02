@@ -9,21 +9,17 @@ ActiveAdmin.register Transportation do
 =end
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # permit_params :list, :of, :attributes, :on, :model
-
-  #permit_params :type
 
 
   #filter :type, :as => :select, :collection => proc {Transportation.type}
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:permitted, :attributes]
-  #   permitted << :other if resource.something?
-  #   permitted
-  # end
+=begin
+
+  sidebar 'Transportations', :only => :show do
+    table_for Transportation.joins(:directions).where(:transportation_id => transportations.id) do |t|
+      t.column("Routes") { |transport| transport. description}
+    end
+  end
+=end
 
 
   index do
@@ -31,16 +27,13 @@ ActiveAdmin.register Transportation do
     column :type
     actions
   end
-  #filter :directions, :as => :check_boxes
+  filter :directions, :label => "Routes", as: :select, collection: Direction.pluck(:routename)
+      #Direction.find_by_sql('select routename from directions')
+
   filter :type
   filter :created_at
   filter :updated_at
 
-  sidebar 'Transporations', :only => :show do
-    table_for Transportation.joins(:directions).where(:transportation_id => Transportation.id) do |t|
-      t.column("transportation_id") { |transport| transport.id }
-    end
-  end
 
 
   controller do

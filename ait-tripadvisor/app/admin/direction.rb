@@ -8,21 +8,11 @@ ActiveAdmin.register Direction do
   #
   # or
 #filter :name, :as =>:select, :on, :place
-  # permit_params do
-  #   permitted = [:permitted, :attributes]
-  #   permitted << :other if resource.something?
-  #   permitted
-  # end
-=begin
-  sidebar 'Directions', :only => :show do
-    table_for Driection.joins(:transportation).where(:transportation_id => :transportation.id) do |t|
-      #t.column("type") { |tranport| tranport.type }
-    end
-  end
-=end
+
   index do
     column :id
     column :price
+    column 'Route Name', :routename
     actions
   end
   controller do
@@ -44,7 +34,7 @@ ActiveAdmin.register Direction do
       Direction.create(:name).valid?
     end
     def permit_params
-      params.require(:direction).permit(:origin_id, :destination_id, :transportation_id, :user_id, :price, :description)
+      params.require(:direction).permit(:origin_id, :destination_id, :transportation_id, :user_id, :price, :description,:routename)
     end
   end
 
