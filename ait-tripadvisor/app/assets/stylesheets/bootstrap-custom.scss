@@ -91,10 +91,10 @@ $close-text-shadow:           0 1px 0 #fff !default;
 
 /* ========== navbar-tab ========== */
     .navbar-nav > li.active.home > a, .navbar-nav > li.active.home > a:hover,.navbar-nav > li.active.home > a:focus{
-      background-color: #83C421;
+      background-color: rgba(170, 140, 166, 0.75);
     }
     .navbar-nav > li.active.service > a, .navbar-nav > li.active.service > a:hover,.navbar-nav > li.active.service > a:focus{
-      background-color: #FFCC33;
+      background-color: rgba(255, 135, 87, 0.55);
     }
 
 #dropdown_login {
