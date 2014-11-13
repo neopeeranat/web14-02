@@ -2,7 +2,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 layout 'users', only: [:edit]
 # before_filter :configure_sign_up_params, only: [:create]
  before_filter :configure_account_update_params, only: [:update]
-
+ before_action :authenticate_user!
 
   def update
     @user = User.find(current_user.id)

@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   get 'users' => 'users#index'
   get 'users/directions'=> 'users#directions'
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" ,:registrations => "users/registrations"}, :skip => [:sessions]
-  # devise_for :users, :controllers => {  }
   devise_scope :user do
     get "/login" => "devise/sessions#new" , :as => :new_user_session
     post '/login' => 'devise/sessions#create', :as => :user_session
@@ -22,8 +21,8 @@ Rails.application.routes.draw do
   #Service
   get 'service/' => 'service#index'
   namespace :service do
-    resources :directions
-    resources :places
+    resources :directions, only: [:new, :create]
+    resources :places, only: [:index, :new, :create]
   end
 
   match '/search' => 'service#search', via: [:get, :post]

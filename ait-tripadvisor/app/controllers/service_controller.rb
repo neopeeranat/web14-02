@@ -29,7 +29,6 @@ class ServiceController < ApplicationController
         flash[:notice]="Enter your destination please"
         redirect_to service_url
       end
-    end
 
   end
 end
