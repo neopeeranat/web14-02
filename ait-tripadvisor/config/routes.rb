@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   #User Management
   get 'users' => 'users#index'
+  resources :user, only: [:show]
   get 'users/directions'=> 'users#directions'
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" ,:registrations => "users/registrations"}, :skip => [:sessions]
   devise_scope :user do

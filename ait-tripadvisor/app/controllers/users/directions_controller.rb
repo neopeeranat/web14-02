@@ -1,5 +1,5 @@
 class Users::DirectionsController < ApplicationController
-  layout 'users'
+  layout 'users_layout'
 
   before_action :set_direction, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
