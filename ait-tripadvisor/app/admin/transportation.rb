@@ -27,14 +27,10 @@ ActiveAdmin.register Transportation do
     column :type
     actions
   end
-  filter :directions, :label => "Routes", as: :select, collection: Direction.pluck(:routename)
-      #Direction.find_by_sql('select routename from directions')
-
+  #filter :directions, :label => "Routes", as: :select, collection: Direction.pluck(:routename)
   filter :type
   filter :created_at
   filter :updated_at
-
-
 
   controller do
    def create
