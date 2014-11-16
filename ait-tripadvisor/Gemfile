@@ -39,6 +39,7 @@ gem 'rails3-jquery-autocomplete'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'bootstrap_form'
+gem 'shareable'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -76,6 +77,7 @@ group :development, :test do
   gem 'faker'
   gem 'rspec-rails'
   gem 'sqlite3'
+  gem 'meta_request'
 end
 
 group :production do
