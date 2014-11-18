@@ -28,7 +28,6 @@ Rails.application.routes.draw do
 
   match '/search' => 'service#search', via: [:get, :post]
   match 'service/details' => "service#details", via: [:get, :post]
-  #match '/details/:id' => "service#details", via: [:get, :post]
   match '/service/dispaly' => "service#display" , via: [:get, :post]
 
 
