@@ -10,6 +10,10 @@ class Users::DirectionsController < ApplicationController
   def edit
   end
 
+  def show
+    @social_url = "#{request.protocol}#{request.host_with_port}#{"/ait-tripadvisor"  if Rails.env == 'production'}/service/directions/#{params[:id]}"
+  end
+
   # PATCH/PUT /directions/1
   # PATCH/PUT /directions/1.json
   def update

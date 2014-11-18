@@ -4,5 +4,11 @@
     <td></td><%= @direction.description %> </td>
   </tr>
 </table>
+<br/>
+<%= render_shareable %>
 
 <h5 align="left"><%= link_to "Back", search_path(id: @direction.destination_id, type: @direction.transportation_id), class:'btn btn-warning btn-xs' %></h5>
+
+<div style="padding-top:50px"></div>
+    <div class="fb-comments" data-href="<%=request.original_url %>" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
+</div>

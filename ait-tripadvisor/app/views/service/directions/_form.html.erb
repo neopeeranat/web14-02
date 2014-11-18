@@ -15,7 +15,7 @@
   </div>
   <div class="field">
     <%= f.label :destination_id %><br>
-    <%= f.text_field :destination_id, id: 'txtDestination' %><br>
+    <%= f.text_field :destination_id, id: 'txtDestination', data:{url:service_places_path(format: :json)} %><br>
     <%= link_to 'New Place', new_service_place_path %><br>
 
   </div>

@@ -4,6 +4,6 @@
 
 $ ->
 
-  $('#txtDestination').tokenInput '/service/places.json', crossDomain: false, tokenLimit: 1;
+  $('#txtDestination').tokenInput $('#txtDestination').data('url'), crossDomain: false, tokenLimit: 1;
   if $('#txtDestination').data('name')
     $('#txtDestination').tokenInput "add", id: $('#txtDestination')[0].defaultValue, name: $('#txtDestination').data('name') ;

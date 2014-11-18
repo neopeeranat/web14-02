@@ -15,7 +15,7 @@
   </div>
   <div class="field">
     <%= f.label :destination_id %><br>
-    <%= f.text_field :destination_id, id: 'txtDestination' , data:{name: (!@direction.destination.blank?)? @direction.destination.name : nil }   %>
+    <%= f.text_field :destination_id, id: 'txtDestination' , data:{name: (!@direction.destination.blank?)? @direction.destination.name : nil, url:service_places_path(format: :json) }   %>
     <%= link_to 'New Place', new_service_place_path %>
   </div>
   <div class="field">
