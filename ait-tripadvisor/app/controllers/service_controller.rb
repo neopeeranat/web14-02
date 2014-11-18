@@ -16,7 +16,6 @@ class ServiceController < ApplicationController
         if(!params[:transportation][:id].blank?)
            @type = Transportation.find(params[:transportation][:id])
            @directions = Direction.where("destination_id=? AND transportation_id =? ", @dists.id, @type.id).order(:price)
-           render
         else
           flash[:alert] = "Please select the transport type"
           redirect_to service_url
