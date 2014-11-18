@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   #Service
   get 'service/' => 'service#index'
   namespace :service do
-    resources :directions, only: [:new, :create]
+    resources :directions, only: [:new, :create, :show]
     resources :places, only: [:index, :new, :create]
   end
 

@@ -9,12 +9,12 @@
             <th>Price</th>
             <th>Detail</th>
           </tr>
-          <% @directions.each  do |route| %>
+          <% @directions.each  do |direction| %>
               <tr align="left">
-                <td><%= @dists.name %></td>
-                <td><%= @type.type%> <!--%= Transportation.find(route.transportation_id).type %--></td>
-                <td><%= route.price %></td>
-                <td><!--%= route.description %--> <%=link_to 'Detail', service_details_path(route) %> </td>
+                <td><%= direction.destination.name %></td>
+                <td><%= direction.transportation.type%> <!--%= Transportation.find(route.transportation_id).type %--></td>
+                <td><%= direction.price %></td>
+                <td><!--%= route.description %--> <%=link_to 'Detail', service_direction_path(direction) %> </td>
               </tr>
           <% end %>
         </table>

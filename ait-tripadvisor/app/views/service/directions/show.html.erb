@@ -1,0 +1,8 @@
+<h4>Detail of the Place</h4>
+<table id ="master">
+  <tr>
+    <td></td><%= @direction.description %> </td>
+  </tr>
+</table>
+
+<h5 align="left"><%= link_to "Back", search_path(id: @direction.destination_id, type: @direction.transportation_id), class:'btn btn-warning btn-xs' %></h5>
