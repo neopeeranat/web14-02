@@ -15,19 +15,19 @@ class ServiceController < ApplicationController
         @dists = Place.find_by_id(params[:txtDestination])
         if(!params[:transportation][:id].blank?)
            @type = Transportation.find(params[:transportation][:id])
-           @directions = Direction.where("destination_id=? AND transportation_id =? ", @dists.id, @type.id)
+           @directions = Direction.where("destination_id=? AND transportation_id =? ", @dists.id, @type.id).order(:price)
            render :display
         else
-          flash[:notice] = "Please select the transport type"
+          flash[:alert] = "Please select the transport type"
           redirect_to service_url
         end
       elsif params[:txtDestination].nil?
         @dists = Place.find(params[:id])
         @type = Transportation.find(params[:type])
-        @directions = Direction.where("destination_id=? AND transportation_id =? ", @dists.id, @type.id)
+        @directions = Direction.where("destination_id=? AND transportation_id =? ", @dists.id, @type.id).order(:price)
         render :display
       else
-        flash[:notice]="Enter your destination please"
+        flash[:alert]="Enter your destination please"
         redirect_to service_url
       end
 
