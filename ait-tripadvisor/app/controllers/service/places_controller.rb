@@ -1,5 +1,5 @@
 class Service::PlacesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user! , except: [:index]
 
   # GET /places
   # GET /places.json
