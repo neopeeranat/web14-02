@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: ait_tripadvisor_production
-  username: deployer
+  #username: deployer
 #  password: <%= ENV['AIT_TRIPADVISOR_DATABASE_PASSWORD'] %>
