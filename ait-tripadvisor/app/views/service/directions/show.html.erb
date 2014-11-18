@@ -1,7 +1,12 @@
-<h4>Detail of the Place</h4>
+<h4>Detail of the Direction</h4>
 <table id ="master">
   <tr>
-    <td></td><%= @direction.description %> </td>
+    <td><%= @direction.description %> </td>
+  </tr>
+  <tr>
+    <td>
+      Created by : <%= link_to @direction.created_by.name, user_path(@direction.created_by) %>
+    </td>
   </tr>
 </table>
 <br/>
