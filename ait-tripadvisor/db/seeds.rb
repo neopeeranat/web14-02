@@ -27,6 +27,13 @@ user3 = User.find_or_create_by!(email: 'bajracharyayemini@gmail.com') do |user|
   user.admin = true
 end
 
+user4 = User.find_or_create_by!(email: 'admin@ait-tripadvisor.com') do |user|
+  user.name = 'Administrator'
+  user.password = '11111111'
+  user.password_confirmation = '11111111'
+  user.admin = true
+end
+
 
 taxi = Transportation.find_or_create_by!(type: 'Taxi')
 bus = Transportation.find_or_create_by!(type: 'Bus')
@@ -37,10 +44,14 @@ place2 = Place.create_with(description:'Amusement').find_or_create_by!(name: 'Si
 place3 = Place.create_with(description:'Shopping mall').find_or_create_by!(name: 'Future Park')
 
 
-direction = Direction.create_with(price: 543.21).find_or_create_by!(origin: place1, destination: place2, transportation: taxi, created_by: user1)
-direction = Direction.create_with(price: 2345.55).find_or_create_by!(origin: place1, destination: place2, transportation: taxi, created_by: user2)
-direction = Direction.create_with(price: 681).find_or_create_by!(origin: place1, destination: place2, transportation: taxi, created_by: user3)
-direction = Direction.create_with(price: 0).find_or_create_by!(origin: place1, destination: place3, transportation: bicycle, created_by: user1)
-direction = Direction.create_with(price: 237.9).find_or_create_by!(origin: place1, destination: place3, transportation: taxi, created_by: user2)
-direction = Direction.create_with(price: 777.77).find_or_create_by!(origin: place1, destination: place3, transportation: bus, created_by: user3)
-direction = Direction.create_with(price: 654.85).find_or_create_by!(origin: place1, destination: place3, transportation: taxi, created_by: user1)
+direction = Direction.create_with(price: 543.21).find_or_create_by!(origin: place1, destination: place2, transportation: taxi, created_by: user1, description:"Go to left and then go to right and stop")
+direction = Direction.create_with(price: 2345.55).find_or_create_by!(origin: place1, destination: place2, transportation: taxi, created_by: user2, description:"Go to right and then go to left and stop")
+direction = Direction.create_with(price: 681).find_or_create_by!(origin: place1, destination: place2, transportation: taxi, created_by: user3, description:"Turn around and you will see your friend")
+direction = Direction.create_with(price: 0).find_or_create_by!(origin: place1, destination: place3, transportation: bicycle, created_by: user1, description:"Turn around and you will see something scary...")
+direction = Direction.create_with(price: 237.9).find_or_create_by!(origin: place1, destination: place3, transportation: taxi, created_by: user2, description:"Go straight and jump into pool")
+direction = Direction.create_with(price: 777.77).find_or_create_by!(origin: place1, destination: place3, transportation: bus, created_by: user3, description:"You already there")
+direction = Direction.create_with(price: 654.85).find_or_create_by!(origin: place1, destination: place3, transportation: taxi, created_by: user1, description:"Ask google map for more information")
+
+direction = Direction.create_with(price: 237.9).find_or_create_by!(origin: place1, destination: place3, transportation: taxi, created_by: user4, description:"Go straight and jump into pool")
+direction = Direction.create_with(price: 777.77).find_or_create_by!(origin: place1, destination: place3, transportation: bus, created_by: user4, description:"You already there")
+direction = Direction.create_with(price: 654.85).find_or_create_by!(origin: place1, destination: place2, transportation: taxi, created_by: user4, description:"Ask google map for more information")
