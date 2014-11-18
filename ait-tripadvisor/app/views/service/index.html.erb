@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="page-header">
     <h1>Our Suggested Ways</h1>
@@ -31,8 +32,8 @@
         <div class="col-lg-3">Transport Type: * </div>
         <div class="col-lg-9">
           <div class="input-group">
-            <%=collection_select(:transportation, :id, Transportation.all, :id, :type, prompt: true) %>
-            <%=button_to 'Search', action: "search", class:"glyphicon glyphicon-pencil" %>
+            <%=collection_select(:transportation, :id, Transportation.all, :id, :type, prompt: true, selected: '1') %>
+            <%=button_to 'Search', action: "search", class: "btn btn-primary",  id:"userSearch" %>
             </div>
           </div>
         </div>
