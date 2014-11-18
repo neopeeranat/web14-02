@@ -1,9 +1,8 @@
 <% if !@directions.nil? %>
-    <div class="container">
+    <div>
       <div>
         <h4 align="center">The Origin of the Picnic will be AIT </h4>
-        <h5 align="center"> <!--%= @dists.description %--></h5>
-        <table class ="table" align="center">
+        <table class ="table" align="left">
           <tr>
             <th>Destination</th>
             <th>Transport Type</th>
@@ -11,15 +10,15 @@
             <th>Detail</th>
           </tr>
           <% @directions.each  do |route| %>
-              <tr>
+              <tr align="left">
                 <td><%= @dists.name %></td>
                 <td><%= @type.type%> <!--%= Transportation.find(route.transportation_id).type %--></td>
                 <td><%= route.price %></td>
-                <td><%=link_to 'Detail', service_details_path(route,@type) %> </td>
+                <td><%= route.description %> <!--%=link_to 'Detail', service_details_path(route) %--> </td>
               </tr>
           <% end %>
         </table>
       </div>
     </div>
-<h5 align="left"><%= link_to "Back", service_path, class:'btn btn-warning btn-xs' %></h5>
+<h5 align="left"><!--%= link_to "Back", service_path, class:'btn btn-warning btn-xs' %--></h5>
 <% end %>
