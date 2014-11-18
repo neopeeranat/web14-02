@@ -11,11 +11,16 @@ class ServiceController < ApplicationController
   end
   def search
 
-      if(!params[:txtDestination].nil?)
+      if(!params[:txtDestination].blank?)
         @dists = Place.find_by_id(params[:txtDestination])
-        @type = Transportation.find(params[:transportation][:id])
-        @directions = Direction.where("destination_id=? AND transportation_id =? ", @dists.id, @type.id)
-        render :display
+        if(!params[:transportation][:id].blank?)
+           @type = Transportation.find(params[:transportation][:id])
+           @directions = Direction.where("destination_id=? AND transportation_id =? ", @dists.id, @type.id)
+           render :display
+        else
+          flash[:notice] = "Please select the transport type"
+          redirect_to service_url
+        end
       elsif params[:txtDestination].nil?
         @dists = Place.find(params[:id])
         @type = Transportation.find(params[:type])
