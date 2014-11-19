@@ -4,7 +4,7 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  # config.secret_key = '1ebf94546975f6b363c947f9a66382139dd5db6793b469ff1cf99644a637dda3e99fb19942ae96d511fcabff057730f0ae3db5f23ced875971f036652aa6d352'
+  config.secret_key = 'ffd1ac0aa02061b09b23e9ba497609a5aa1f42f4370a32ba8568a05b06c6e86f14815f552904f51721370ae958938ff8f2973abcafa7df81be43fdb084fd511c'  if Rails.env == 'production'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -233,7 +233,11 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :facebook, "1428047197434520", "5e398b2a538da342d1e39f137de5e04f"
+  if Rails.env == 'production'
+    config.omniauth :facebook, "1427980860774487", "91a30f9c9f8fe72b690f9247d46ae20d"
+  else
+    config.omniauth :facebook, "1428047197434520", "5e398b2a538da342d1e39f137de5e04f"
+  end
   config.omniauth :twitter, "zxlwyNvWE66AylPQUnvmnlLkp", "Lm6LSdDBe4NCMxfxBKt6rEkinMHj2znmkchjHELUlPpLDTYHYy", x_auth_access_type: 'read/write'
   config.omniauth :gplus, "96177173699-8gmeipec3heskef11o81k488ild0krff.apps.googleusercontent.com",  "mmvd3-KJybmsW9scOA0Fui8o", scope: 'userinfo.email, userinfo.profile'
   # ==> Warden configuration

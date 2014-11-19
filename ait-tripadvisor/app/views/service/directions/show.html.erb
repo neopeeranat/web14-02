@@ -1,0 +1,19 @@
+<h4>Detail of the Direction</h4>
+<table id ="master">
+  <tr>
+    <td><%= @direction.description %> </td>
+  </tr>
+  <tr>
+    <td>
+      Created by : <%= link_to @direction.created_by.name, user_path(@direction.created_by) %>
+    </td>
+  </tr>
+</table>
+<br/>
+<%= render_shareable %>
+
+<h5 align="left"><%= link_to "Back", search_path(id: @direction.destination_id, type: @direction.transportation_id), class:'btn btn-warning btn-xs' %></h5>
+
+<div style="padding-top:50px"></div>
+    <div class="fb-comments" data-href="<%=request.original_url %>" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
+</div>

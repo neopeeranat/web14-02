@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   #User Management
   get 'users' => 'users#index'
-  resources :user, only: [:show]
   get 'users/directions'=> 'users#directions'
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" ,:registrations => "users/registrations"}, :skip => [:sessions]
   devise_scope :user do
@@ -18,11 +17,13 @@ Rails.application.routes.draw do
   namespace :users do
     resources :directions, only: [:show, :edit, :update, :destroy]
   end
+  resources :users, only: [:show]
 
+  
   #Service
   get 'service/' => 'service#index'
   namespace :service do
-    resources :directions, only: [:new, :create]
+    resources :directions, only: [:new, :create, :show]
     resources :places, only: [:index, :new, :create]
   end
 

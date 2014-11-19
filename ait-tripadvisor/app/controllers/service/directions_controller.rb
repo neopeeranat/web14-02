@@ -1,5 +1,6 @@
 class Service::DirectionsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_direction, only: [:show]
 
   # GET /directions
   # GET /directions.json
@@ -13,6 +14,8 @@ class Service::DirectionsController < ApplicationController
     end
   end
 
+  def show
+  end
   # GET /directions/new
   def new
     @direction = Direction.new
@@ -37,6 +40,10 @@ class Service::DirectionsController < ApplicationController
 
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_direction
+      @direction = Direction.find(params[:id])
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def direction_params
       params.require(:direction).permit(:destination_id, :transportation_id, :price, :description)

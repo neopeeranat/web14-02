@@ -26,7 +26,7 @@
         <div class="form-group">
           <label for="txtDestination" class="col-sm-4 control-label">Destination: * </label>
           <div class="col-sm-8">
-            <%= text_field_tag(:txtDestination, class:"form-control") %>
+            <%= text_field_tag :txtDestination, nil,  class:"form-control", data:{url:service_places_path(format: :json)} %>
 
           </div>
         </div>
