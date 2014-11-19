@@ -9,7 +9,7 @@ ActiveAdmin.register_page "Dashboard" do
        # small I18n.t("active_admin.dashboard_welcome.call_to_action")
       #end
     end
-  section "User Statistics" do
+  panel "User Statistics" do
     table_for User.all do
       column :id
       column :email
@@ -18,7 +18,7 @@ ActiveAdmin.register_page "Dashboard" do
       #actions
     end
   end
-  section "Visiting Places"
+  panel "Visiting Places"
     table_for Place.all do
       column :id
       column :name
@@ -28,7 +28,7 @@ ActiveAdmin.register_page "Dashboard" do
         #render "pai_graph"
       #end
     #end
-    section "Line Graph" do
+    panel "Line Graph" do
       div do
         render "line_graph"
       end
