@@ -12,7 +12,6 @@ ActiveAdmin.register Direction do
   index do
     column :id
     column :price
-    column 'Route Name', :routename
     actions
   end
   controller do
@@ -34,7 +33,7 @@ ActiveAdmin.register Direction do
       Direction.create(:name).valid?
     end
     def permit_params
-      params.require(:direction).permit(:origin_id, :destination_id, :transportation_id, :user_id, :price, :description,:routename)
+      params.require(:direction).permit(:origin_id, :destination_id, :transportation_id, :user_id, :price, :description)
     end
   end
 
