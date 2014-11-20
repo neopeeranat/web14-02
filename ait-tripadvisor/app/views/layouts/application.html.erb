@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="shortcut icon" href="http://www.ait.ac.th/favicon.ico" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "Ait Trip Advisor" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Ait Trip Advisor" %>">
     <meta property="fb:app_id" content="1427980860774487"/>
+    <meta property="og:url" content="<%=request.original_url %>"/>
+    <meta property="og:site_name" content="AIT Trip Advisor"/>
+    <meta property="og:title" content="<%= (@meta_content_title.nil?)? "AIT Trip Advisor" : @meta_content_title %>"/>
+    <meta property="og:description" content="WAE project 2014 Group 2."/>
+    <meta property="og:image" content="http://www.ait.ac.th/media/documents/logo_ait_08.jpg"/>
+    <meta property="og:type" content="website"/>
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 

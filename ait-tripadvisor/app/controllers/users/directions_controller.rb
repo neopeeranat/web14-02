@@ -12,6 +12,7 @@ class Users::DirectionsController < ApplicationController
 
   def show
     @social_url = "#{request.protocol}#{request.host_with_port}#{"/ait-tripadvisor"  if Rails.env == 'production'}/service/directions/#{params[:id]}"
+    @meta_content_title = "Direction from #{@direction.origin} to #{@direction.destination}. Created by #{@direction.created_by.name}"
   end
 
   # PATCH/PUT /directions/1
