@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: ps6_production
-  username: ps6
+  username: deployer
   password: <%= ENV['PS6_DATABASE_PASSWORD'] %>
