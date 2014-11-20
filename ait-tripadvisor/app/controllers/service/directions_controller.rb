@@ -1,5 +1,5 @@
 class Service::DirectionsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, execpt: [:show]
   before_action :set_direction, only: [:show]
 
   # GET /directions
@@ -15,6 +15,7 @@ class Service::DirectionsController < ApplicationController
   end
 
   def show
+    @meta_content_title = "Direction from #{@direction.origin} to #{@direction.destination}. Created by #{@direction.created_by.name}"
   end
   # GET /directions/new
   def new
