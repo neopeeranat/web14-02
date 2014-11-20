@@ -34,6 +34,8 @@
               <%=button_tag ' Search' ,class: "btn btn-primary glyphicon glyphicon-search" %>
               <% if user_signed_in? %>
                   <%=link_to 'New Direction', new_service_direction_path, class:"btn btn-info pull-right" %>
+              <% else %>
+                  <p class="pull-right inactive">* login to share your direction with us </p>
               <% end %>
             </div>
           </div>

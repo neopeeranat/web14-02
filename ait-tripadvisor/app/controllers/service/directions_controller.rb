@@ -30,7 +30,7 @@ class Service::DirectionsController < ApplicationController
     @direction.created_by = current_user
     respond_to do |format|
       if @direction.save
-        format.html { redirect_to service_path, notice: 'direction was successfully created.' }
+        format.html { redirect_to service_path, notice: 'direction was successfully created.    You can manage your directions via Account > Manage your account'}
         format.json { render :show, status: :created, location: [:service, @direction] }
       else
         format.html { render :new }
