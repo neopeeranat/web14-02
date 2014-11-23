@@ -1,5 +1,5 @@
 class Service::DirectionsController < ApplicationController
-  before_action :authenticate_user!, execpt: [:show]
+  before_action :authenticate_user!, except: [:show]
   before_action :set_direction, only: [:show]
 
   # GET /directions
