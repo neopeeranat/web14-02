@@ -10,36 +10,61 @@
       </ul>
     </div>
   <% end %>
+  <table  class="table table-striped">
+    <tr>
   <div class="field">
-    <h4>From AIT</h4>
-  </div>
-  <div class="field">
-    <%= f.label :destination_id %><br>
-    <%= f.text_field :destination_id, id: 'txtDestination', data:{url:service_places_path(format: :json)} %><br>
-    <%= link_to 'New Place', new_service_place_path %><br>
+   <td> <h4>From AIT</h4> </td>
+    <td color="Blue"><%= link_to 'New Place', new_service_place_path %><br> </td>
 
   </div>
+    </tr>
+    <tr>
   <div class="field">
-    <br>
-    <%= f.label :transportation_id %><br>
+    <td>
+    <%= f.label :destination_id %>
+    </td>
+    <td>
+    <%= f.text_field :destination_id, id: 'txtDestination', data:{url:service_places_path(format: :json)} %>
+    </td>
+
+  </div>
+    </tr>
+    <tr>
+  <div class="field">
+   <td>
+    <%= f.label :transportation_id %>
+   </td>
+    <td>
     <%= f.select :transportation_id, options_from_collection_for_select(Transportation.all, "id", "type", @direction.transportation_id) %>
-
+    </td>
   </div>
+    </tr>
+    <tr>
   <div class="field">
-    <br>
-    <%= f.label :price %><br>
+   <td>
+    <%= f.label :price %>
+   </td>
+    <td>
     <%= f.number_field :price %>
-    <br>
+    </td>
   </div>
-  <div class="field">
-    <br>
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-    <br>
+   </tr>
+    <tr>
+    <div class="field">
+   <td>
+    <%= f.label :description %></td>
+     <td>
+    <%= f.text_area :description, rows:"4", cols:"130" %>
+     </td>
   </div>
+    </tr>
+   <tr>
   <div class="actions">
-    <br>
+    <td></td>
+    <td>
     <%= f.submit %>
+    </td>
   </div>
-    <br>
+   </tr>
+  </table>
 <% end %>

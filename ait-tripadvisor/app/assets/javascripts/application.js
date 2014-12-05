@@ -20,5 +20,5 @@
 //= require_directory .
 
 $(function () {
-  $('body').css("background-color",$(".navbar-collapse ul li.active :first").css('background-color'))
+ // $('body').css("background-color",$(".navbar-collapse ul li.active :first").css('background-color'))
 });

@@ -10,17 +10,32 @@
       </ul>
     </div>
   <% end %>
+  <table class="table table-striped">
+    <tr>
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <td>
+    <%= f.label :name %></td>
+    <td>
+    <%= f.text_field :name, size: "82" %>
+    </td>
   </div>
+    </tr>
+    <tr>
   <div class="field">
-    <br>
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+   <td>
+    <%= f.label :description %></td>
+    <td>
+    <%= f.text_area :description, rows:"4", cols:"80"  %>
+    </td>
   </div>
+    </tr>
+    <tr>
   <div class="actions">
+    <td></td>
+    <td>
     <%= f.submit %>
+    </td>
   </div>
-    <br>
+    </tr>
+  </table>
 <% end %>
