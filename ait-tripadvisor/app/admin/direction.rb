@@ -11,7 +11,10 @@ ActiveAdmin.register Direction do
 
   index do
     column :id
+    column :destination
+    column :transportation
     column :price
+    column :created_by
     actions
   end
   controller do

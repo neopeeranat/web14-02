@@ -15,11 +15,19 @@ class ServiceController < ApplicationController
   end
   def search
 
-      if(!params[:txtDestination].blank?)
-        @dists = Place.find_by_id(params[:txtDestination])
+      if(!params[:txtDestination].blank? || !params[:place][:category_id].blank?)
+
+
         if(!params[:transportation][:id].blank?)
            @type = Transportation.find(params[:transportation][:id])
-           @directions = Direction.where("destination_id=? AND transportation_id =? ", @dists.id, @type.id).order(:price)
+
+           if(!params[:txtDestination].blank?)
+             @dests = Place.find_by_id(params[:txtDestination])
+             @directions = Direction.where("destination_id=? AND transportation_id =? ", @dests.id, @type.id).order(:price)
+           elsif(!params[:place][:category_id].blank?)
+             @directions = Direction.joins(destination: :category).where("places.category_id" => params[:place][:category_id],transportation_id: @type.id)
+           end
+
         else
           flash.now[:alert] = "Please select the transport type"
           #redirect_to service_url

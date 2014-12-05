@@ -24,6 +24,12 @@
             </div>
           </div>
           <div class="form-group">
+            <label for="txtDestination" class="col-sm-3 control-label">Or by Category: * </label>
+            <div class="col-sm-8">
+              <%=collection_select(:place, :category_id, Category.all, :id, :name, {prompt: true , selected: :category, include_blank: true}, {class:"form-control", onchange: "clearDestination()"} ) %>
+            </div>
+          </div>
+          <div class="form-group">
             <label for="transportation_id" class="col-sm-3 control-label">Transport Type: * </label>
             <div class="col-sm-8">
               <%=collection_select(:transportation, :id, Transportation.all, :id, :type, {prompt: true , selected: '1'}, {class:"form-control"}) %>
