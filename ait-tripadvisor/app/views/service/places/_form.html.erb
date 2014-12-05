@@ -1,3 +1,9 @@
+<% content_for :head do %>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
+<%= javascript_include_tag "service/places.js" %>
+<%= stylesheet_link_tag "service/places.css" %>
+<% end %>
+
 <%= form_for [:service, @place] do |f| %>
   <% if @place.errors.any? %>
     <div id="error_explanation">
@@ -30,6 +36,34 @@
   </div>
     </tr>
     <tr>
+      <div class="field">
+        <td>
+          <%= f.label :category %></td>
+          <td>
+            <%=collection_select(:place, :category_id, Category.all, :id, :name, {prompt: true , selected: :category, include_blank: true}, {class:"form-control"}) %>
+          </td>
+        </div>
+    </tr>
+    <tr>
+      <div class="field">
+        <td>
+          <%= f.label :location %></td>
+        </td>
+        <td>
+          <%= f.hidden_field :lat %><%= f.hidden_field :lng %>
+          Please right-click on location position
+          <div class="container" style="height:400px">
+            <div style="clear:both"></div>
+            <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+            <div style="clear:both"></div>
+            <div id="map-canvas"></div>
+            <div style="clear:both"></div>
+          </div>
+        </td>
+
+      </div>
+    </tr>
+    <tr>
   <div class="actions">
     <td></td>
     <td>
@@ -38,4 +72,5 @@
   </div>
     </tr>
   </table>
+
 <% end %>

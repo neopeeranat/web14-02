@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118041658) do
+ActiveRecord::Schema.define(version: 20141205101011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,12 @@ ActiveRecord::Schema.define(version: 20141118041658) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "directions", force: true do |t|
     t.integer  "origin_id"
@@ -53,7 +59,11 @@ ActiveRecord::Schema.define(version: 20141118041658) do
     t.datetime "updated_at"
     t.decimal  "lat",         precision: 10, scale: 6
     t.decimal  "lng",         precision: 10, scale: 6
+    t.integer  "category_id"
   end
+
+  add_index "places", ["category_id"], name: "index_places_on_category_id", using: :btree
+  add_index "places", ["name"], name: "index_places_on_name", unique: true, using: :btree
 
   create_table "transportations", force: true do |t|
     t.string   "type"

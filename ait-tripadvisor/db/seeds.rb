@@ -34,14 +34,18 @@ user4 = User.find_or_create_by!(email: 'admin@ait-tripadvisor.com') do |user|
   user.admin = true
 end
 
+cat1 = Category.find_or_create_by!(name: 'School')
+cat2 = Category.find_or_create_by!(name: 'Amusement Park')
+cat3 = Category.find_or_create_by!(name: 'Shopping Mall')
+cat4 = Category.find_or_create_by!(name: 'Temple')
 
 taxi = Transportation.find_or_create_by!(type: 'Taxi')
 bus = Transportation.find_or_create_by!(type: 'Bus')
 bicycle = Transportation.find_or_create_by!(type: 'Bicycle')
 
-place1 = Place.create_with(description:'Asian Institute of Technology').find_or_create_by!(name: 'AIT')
-place2 = Place.create_with(description:'Amusement').find_or_create_by!(name: 'Siam Park')
-place3 = Place.create_with(description:'Shopping mall').find_or_create_by!(name: 'Future Park')
+place1 = Place.create_with(description:'Asian Institute of Technology', category: cat1, lat:14.0797792, lng:100.6114424).find_or_create_by!(name: 'AIT')
+place2 = Place.create_with(description:'Amusement', category: cat2, lat:13.807484, lng:100.694918,17).find_or_create_by!(name: 'Siam Park')
+place3 = Place.create_with(description:'Shopping mall', category: cat3, lat:13.98926, lng:100.617862).find_or_create_by!(name: 'Future Park')
 
 
 direction = Direction.create_with(price: 543.21).find_or_create_by!(origin: place1, destination: place2, transportation: taxi, created_by: user1, description:"Go to left and then go to right and stop")

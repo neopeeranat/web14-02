@@ -4,6 +4,7 @@ ActiveAdmin.register Place do
 index do
   column :id
   column :name
+  column :category
   column :description
   actions
 end
@@ -11,6 +12,7 @@ end
  filter :origins
  filter :destinations
  filter :name
+ filter :category
  filter :description
 
 controller do
@@ -36,7 +38,7 @@ controller do
     redirect_to admin_place_path(@place)
   end
   def permit_params
-    params.require(:place).permit(:name, :description)
+    params.require(:place).permit(:name, :description, :category_id, :lat, :lng)
   end
 end
 

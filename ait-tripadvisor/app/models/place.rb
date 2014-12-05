@@ -8,7 +8,10 @@ class Place < ActiveRecord::Base
                        :dependent => :destroy
   has_many :origins, :through => :arrivals
 
-validates :name, :description, presence: true
+  belongs_to :category
+
+  validates :name, :description, presence: true
+  validates_uniqueness_of :name
 
   def to_s
     "#{name}"
