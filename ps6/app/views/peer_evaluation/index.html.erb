@@ -1,40 +1,80 @@
 
-<div id ="container">
-  <h1>Peer Evaluation</h1>
-  <div id = "review">
-    <table>
-      <th>
-        <td>Group</td>
-        <td>Reviews</td>
-      </th>
-      <tr>
-          <td>Group 4  Reviews</td>
+<div class ="container">
+  <h1 class="text-center">User Evaluation</h1>
+  <div class= "review">
+    <h3>Criticism to our website</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Group</th>
+          <th>Reviews</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Group 4 </td>
           <td>
-            <h6>Purpose of the Project</h6>
-            <h6>Project Models</h6>
-            <h6>Usability</h6>
-            <h6>Look and feel</h6>
+            <%=image_tag("pdf-icon.png") %>  <%=link_to 'Document', 'http://web4.cs.ait.ac.th/ps5/doc/eval.pdf' %>
           </td>
-      </tr>
-      <tr>
-        <td>Group 6  Reviews</td>
-        <td>
-          <h6>Purpose of the Project</h6>
-          <h6>Project Models</h6>
-          <h6>Usability</h6>
-          <h6>Look and feel</h6>
-        </td>
-      </tr>
-      <tr>
-        <td>Reviews Out side Department</td>
-        <td>
-          <h6>Purpose of the Project</h6>
-          <h6>Project Models</h6>
-          <h6>Usability</h6>
-          <h6>Look and feel</h6>
-        </td>
-      </tr>
+        </tr>
+        <tr>
+          <td>Group 6 </td>
+          <td>
+            <%=image_tag("pdf-icon.png") %>  <%=link_to 'Document', asset_path("grp2.pdf") %>
+          </td>
+        </tr>
+        <tr>
+          <td>Outside Department</td>
+          <td>
+            <%=image_tag("pdf-icon.png") %>  <%=link_to 'Document', asset_path("AIT Trip Adivisor Questionnaire  (Responses) - Form Responses 1.pdf") %>
+            &nbsp;&nbsp;<%=image_tag("google-spreadsheet-icon.png") %>  <%= link_to 'Google Spreadsheet' , 'https://docs.google.com/spreadsheets/d/1yCUsc698vFI2mocry6_GOiXM78KLQUeQioXMM1_M4Io/edit#gid=489961351' , target: '_blank' %>
+          </td>
+        </tr>
+      </tbody>
     </table>
+    <h3>Criticism to group 1 and 10 website</h3>
+    <p>
+      <%=image_tag("pdf-icon.png") %>  <%=link_to 'Document', asset_path("WAECriticismDocumentforTeam1Team10.pdf") %>
+    </p>
+    <br><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Action plan to reponse criticisms</h3>
+
+      </div>
+      <div class="panel-body list-group">
+        <p>
+          After look all comments from users, they want to add new feature to make website more comfortable and easy to use. Also suggest to re-design website more beautiful.
+        </p>
+        <p>
+          These are tasks for our next version.
+        </p>
+        <!-- <div class="list-group"> -->
+
+          <div class="list-group-item">
+            <h4 class="list-group-item-heading">Add most search place</h4>
+            <p class="list-group-item-text">From criticism, user need easy search for most popular place.</p>
+          </div>
+          <div class="list-group-item">
+            <h4 class="list-group-item-heading">Fix duplicate place name</h4>
+            <p class="list-group-item-text">I saw that user can create same place name. We should fix this problem</p>
+          </div>
+          <div class="list-group-item">
+            <h4 class="list-group-item-heading">Place information</h4>
+            <p class="list-group-item-text">User want to get information about place their want to go. It better if we able to provide page for that</p>
+          </div>
+          <div class="list-group-item">
+            <h4 class="list-group-item-heading">Search place by categories</h4>
+            <p class="list-group-item-text">From criticism, user want to search in type of category and get all place's directions from selected category.</p>
+          </div>
+          <div class="list-group-item">
+            <h4 class="list-group-item-heading">Direction Details</h4>
+            <p class="list-group-item-text">When users see direction details, they want to get more information since this site used for international students.
+              We should add upload picture, integrate google map direction.</p>
+          </div>
+        <!-- </div> -->
+      </div>
+    </div>
   </div>
 
 </div>

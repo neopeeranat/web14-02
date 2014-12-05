@@ -1,5 +1,5 @@
 class Service::DirectionsController < ApplicationController
-  before_action :authenticate_user!, execpt: [:show]
+  before_action :authenticate_user!, except: [:show]
   before_action :set_direction, only: [:show]
 
   # GET /directions
@@ -16,6 +16,11 @@ class Service::DirectionsController < ApplicationController
 
   def show
     @meta_content_title = "Direction from #{@direction.origin} to #{@direction.destination}. Created by #{@direction.created_by.name}"
+
+    #remove query string to solve facebook comment link problem
+    if !params["fb_action_ids"].nil? || !params["fb_comment_id"].nil?
+      redirect_to service_direction_path(@direction)
+    end
   end
   # GET /directions/new
   def new

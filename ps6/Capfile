@@ -21,6 +21,7 @@ require 'capistrano/bundler'
 require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
 
+
 # Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
 Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
 
@@ -48,6 +49,8 @@ module RemoteCacheWithProjectRootStrategy
   end
 
   def fetch_revision
-      context.capture(:git, "rev-parse --short #{fetch(:branch)}")
+
+    context.capture(:git, "rev-parse --short #{fetch(:branch)}")
+
   end
 end
