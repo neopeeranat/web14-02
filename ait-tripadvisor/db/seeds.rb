@@ -44,7 +44,7 @@ bus = Transportation.find_or_create_by!(type: 'Bus')
 bicycle = Transportation.find_or_create_by!(type: 'Bicycle')
 
 place1 = Place.create_with(description:'Asian Institute of Technology', category: cat1, lat:14.0797792, lng:100.6114424).find_or_create_by!(name: 'AIT')
-place2 = Place.create_with(description:'Amusement', category: cat2, lat:13.807484, lng:100.694918,17).find_or_create_by!(name: 'Siam Park')
+place2 = Place.create_with(description:'Amusement', category: cat2, lat:13.807484, lng:100.694918).find_or_create_by!(name: 'Siam Park')
 place3 = Place.create_with(description:'Shopping mall', category: cat3, lat:13.98926, lng:100.617862).find_or_create_by!(name: 'Future Park')
 
 

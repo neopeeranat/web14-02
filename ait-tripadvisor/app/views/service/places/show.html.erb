@@ -1,0 +1,28 @@
+<% content_for :head do %>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
+<%= javascript_include_tag "service/places.js" %>
+<%= stylesheet_link_tag "service/places.css" %>
+<% end %>
+
+<div class="page-header">
+<%= link_to service_path, :class => 'btn btn-default' do %>
+<span class="glyphicon glyphicon-circle-arrow-left"></span>
+Back
+<% end %>
+
+<h1 id="place_name"><%= @place.name %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Description : </dt>
+  <dd id="place_desc"><%= @place.description %></dd>
+  <dt>Category : </dt>
+  <dd><%= @place.category.name %></dd>
+
+
+</dl>
+<% if !@place.lat.blank? && !@place.lng.blank? %>
+<div class="container" style="height:400px">
+  <div id="map-canvas-show" data-lat="<%= @place.lat=%>" data-lng="<%= @place.lng%>"></div>
+</div>
+<% end %>
