@@ -6,5 +6,5 @@
     <%= render 'form' %>
   </div>
 
-  <%= link_to 'Back', new_service_direction_path, class:'glyphicon glyphicon-circle-arrow-left' %>
+  <%= link_to link_to content_tag('i',nil,{class:'glyphicon glyphicon-circle-arrow-left'}) +' Back', new_service_direction_path, class:'btn btn-primary' %>
 </div>

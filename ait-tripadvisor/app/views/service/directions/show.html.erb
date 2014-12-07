@@ -1,100 +1,79 @@
-<h4>Detail of the Direction</h4>
-<h>Your Destination:</h>
- <p  id="nameofplace" > <%= Place.find(@direction.destination_id) %></p>
+<% content_for :head do %>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
+<%= javascript_include_tag "service/direction_show.js" %>
+<%= stylesheet_link_tag "service/direction_show.css" %>
+<% end %>
 
-<table id ="master">
-  <tr>
-    <td><%= @direction.description %> </td>
-  </tr>
-  <tr>
-    <td>
-      Created by : <%= link_to @direction.created_by.name, user_path(@direction.created_by) %>
-    </td>
-  </tr>
-</table>
-<br/>
+<div class="container">
+  <div class="page-header">
+    <h1>Direction detail</h1>
+  </div>
 
+  <div class="row">
+    <div class="col-md-6">
+      <table class="table">
+        <thead>
+          <tr>
+            <td>Origin:</td>
+            <td><%= link_to @direction.origin, service_place_path(@direction.origin) %></td>
+          </tr>
+          <tr>
+            <td>Destination:</td>
+            <td><%= link_to @direction.destination, service_place_path(@direction.destination) %></td>
+          </tr>
+          <tr>
+            <td>Price:</td>
+            <td><%= @direction.price%></td>
+          </tr>
+          <tr>
+            <td>Description:</td>
+            <td><%= @direction.description%></td>
+          </tr>
+        </thead>
+      </table>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <i class="glyphicon glyphicon-list-alt"></i>&nbsp;<a data-toggle="collapse" data-parent="#accordion" href="#route_detail">Route Datails</a>
+          </h4>
+        </div>
+        <div id="route_detail" class="panel-collapse collapse">
+          <div class="panel-body"  id="directions-panel">
 
-<script
-src="http://maps.googleapis.com/maps/api/js">
-</script>
+          </div>
+        </div>
+      </div>
 
-<script>
-    //AIT 14.0791° N, 100.6114°
+    </div>
+    <div class="col-md-6"  style="height:480px">
 
-    var geocoder = new google.maps.Geocoder();
-    var lat=0
-    var long=0
-    // var address = "new york";
-    var address = $("#nameofplace").text();
-    geocoder.geocode( { 'address': address}, function(results, status) {
+      <% if !@direction.destination.lat.blank? && !@direction.destination.lng.blank? %>
+      <%= content_tag 'div', nil, {id:'map-canvas-show', data:{origin:@direction.origin, destination:@direction.destination , transportation:@direction.transportation}} %>
+      <% end %>
 
-        if (status == google.maps.GeocoderStatus.OK) {
-            lat = results[0].geometry.location.lat();
-            long = results[0].geometry.location.lng();
-            //alert(lat);
-            //  alert(long);
-        }
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
 
-        var myCenter=new google.maps.LatLng(14.0791, 100.6114);
-        var mark = new google.maps.LatLng(lat, long);
+    </div>
+  </div>
 
-        function initialize()
-        {
-            var mapProp = {
-                center: myCenter,
-                zoom:5,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
+  <div class="row vertical-align" style="padding-top:10px">
+    <div class="col-md-6 pull-left">
+      <%= link_to search_path(id: @direction.destination_id, type: @direction.transportation_id), class:'btn btn-primary'  do %>
+      <span class="glyphicon glyphicon-circle-arrow-left"></span>
+      Back
+      <% end %>
+    </div>
+    <div class="col-md-6 pull-right vcenter">
+      <%= render_shareable url:@social_url  %>
+    </div>
 
-            var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+  </div>
+  <div class="row">
+    <div style="padding-top:50px"></div>
+    <div class="fb-comments" data-href="<%=request.original_url %>" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
+  </div>
 
-            var marker = new google.maps.Marker({
-                position: myCenter,
-                title:'Click to zoom'
-            });
-
-            marker.setMap(map);
-
-            var infowindow = new google.maps.InfoWindow({
-                content:"Asian Institute of Technology: Your route starts from here"
-            });
-
-            google.maps.event.addListener(marker, 'click', function() {
-                infowindow.open(map,marker);
-            });
-
-            //this is to place marker on searched place
-            var marker2 = new google.maps.Marker({
-                position: mark,
-                title:'Click to zoom'
-            });
-
-            marker2.setMap(map);
-
-
-
-// Zoom to 9 when clicking on marker
-            google.maps.event.addListener(marker,'click',function() {
-                map.setZoom(10);
-                map.setCenter(marker.getPosition());
-            });
-        }
-
-        google.maps.event.addDomListener(window, 'load', initialize);
-
-    });
-</script>
-
-
-
-<div id="googleMap" style="width:800px;height:400px;"></div>
-
-
-
-<%= render_shareable %>
-<h5 align="left"><%= link_to "Back", search_path(id: @direction.destination_id, type: @direction.transportation_id), class:'btn btn-warning btn-xs' %></h5>
-
-<div style="padding-top:50px"></div>
-<div class="fb-comments" data-href="<%=request.original_url %>" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
 </div>
