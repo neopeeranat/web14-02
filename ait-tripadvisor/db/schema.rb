@@ -62,8 +62,8 @@ ActiveRecord::Schema.define(version: 20141205101011) do
     t.integer  "category_id"
   end
 
- add_index "places", ["category_id"], name: "index_places_on_category_id", using: :btree
- add_index "places", ["name"], name: "index_places_on_name", unique: true, using: :btree
+  add_index "places", ["category_id"], name: "index_places_on_category_id", using: :btree
+  add_index "places", ["name"], name: "index_places_on_name", unique: true, using: :btree
 
   create_table "transportations", force: true do |t|
     t.string   "type"

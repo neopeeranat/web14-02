@@ -23,6 +23,6 @@ Back
 </dl>
 <% if !@place.lat.blank? && !@place.lng.blank? %>
 <div class="container" style="height:400px">
-  <div id="map-canvas-show" data-lat="<%= @place.lat %>" data-lng="<%= @place.lng%>"></div>
+  <div id="map-canvas-show" data-lat="<%= @place.lat=%>" data-lng="<%= @place.lng%>"></div>
 </div>
 <% end %>
