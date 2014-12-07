@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   namespace :users do
     resources :directions, only: [:show, :edit, :update, :destroy]
   end
+  get "users/check_email", :controller => "users", :action => "check_email"
+ # map.resources :users
   resources :users, only: [:show]
 
   

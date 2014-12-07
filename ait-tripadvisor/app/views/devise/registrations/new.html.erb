@@ -1,19 +1,99 @@
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
+<script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+<script type="text/javascript" src="/jquery-1.6.1.min.js"></script>
+<script>
+    function validation()
+    {
+        var value = $("#usupassword").val();
+        var regx = new RegExp( /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/);
+        if(regx.test(value))
+        {
+            $("#upassword").remove();
+            $( "#ususubmit" ).prop( "disabled", false );
+        }
+        else
+        {
+            $("#upassword").remove();
+            $("#usupassword").after('<span id= upassword><font color= red>Password must contain at least <br> 1: One upper case character   <br>  2: One lower case character  <br>3: One digit  <br> 4: One special character <br>5: Min Length is 8"</font></span>');
+            $( "#ususubmit" ).prop( "disabled", true );
+        }
+    }
+</script>
+<script>
+  function checkEmail()
+  {
+    var mail = $("#usuemail").val();
+    var request = $.ajax({
+        url: "check_email",
+        type: "get",
+        data: {email: mail}
+        //dataType: "html"
+    });
+    request.done(function( msg ) {
+       // $( "#log" ).html( msg );
+        if(msg==false)
+        {
+            $("#semail").remove();
+            $("#usuemail").after('<span id = semail><font color= red>This email is already registered.. please enter another one</font></span>');
+            $( "#ususubmit" ).prop( "disabled", true );
+        }
+        else
+        {
+            $("#semail").remove();
+            $( "#ususubmit" ).prop( "disabled", false );
+        }
+        //alert(msg);
+    });
+    request.fail(function( jqXHR, textStatus ) {
+        alert( "Request failed: " + textStatus );
+    });
+  }
+</script>
+<script>
+   // $("new_user").validate();
+
+    $(document).ready(function (){
+        $("#sign_up").validate({
+            rules: {
+// simple rule, converted to {required:true}
+                "user[email]": {
+                    required: true
+                },
+                "user[password]": {
+                    required: true
+
+                },
+                "user[password_confirmation]": {
+                    required: true,
+                    equalTo: "#usupassword"
+                }
+            },
+            messages: {
+                "user[password_confirmation]":{
+                    equalTo: "Password don't matched. Please re-enter again"
+                }
+            }
+
+        });
+    });
+</script>
 <div class="authform">
-  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f| %>
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form', :id =>'sign_up'}) do |f| %>
     <h3>Sign up</h3>
     <%= devise_error_messages! %>
     <div class="form-group">
       <%= f.label :email %>
-      <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
+      <%= f.email_field :email, id: 'usuemail', :autofocus => true, class: 'form-control', onblur: "checkEmail();" %>
     </div>
     <div class="form-group">
       <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
+      <%= f.password_field :password, id: 'usupassword', class: 'form-control', onblur: 'validation();' %>
     </div>
     <div class="form-group">
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
     </div>
-     <%= f.submit 'Sign up', :class => 'button right' %>
+     <%= f.submit 'Sign up', :class => 'button right', id: 'ususubmit' %>
   <% end %>
 </div>
