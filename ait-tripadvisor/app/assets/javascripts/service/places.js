@@ -119,7 +119,6 @@ function initialize() {
 
   function setMarkerInfo(marker){
     //Content structure of info Window for the Markers
-    console.log(marker)
     var contentString = $('<div class="marker-info-win">'+
     '<div class="marker-inner-win"><span class="info-content">'+
     '<h1 class="marker-heading">' + ($('#place_name').val()||marker.title||'New Marker') + '</h1>'+
@@ -144,20 +143,64 @@ function initialize() {
     $('#place_lng').val(marker.getPosition().B)
   }
 
+}
 
 
 
 
 
+function initialize_show() {
+
+  var markers = [];
+  var map
+  var mLatLng = new google.maps.LatLng($('#map-canvas-show').data('lat'), $('#map-canvas-show').data('lng'));
+  var name = $('#place_name').text();
+  var desc = $('#place_desc').text();
+  var mapOptions = {
+    zoom: 16,
+    center: mLatLng,
+  };
+  map = new google.maps.Map(document.getElementById('map-canvas-show'), mapOptions);
 
 
+  var marker = new google.maps.Marker({
+    position: mLatLng,
+    map: map,
+    title: name
+  });
+  setMarkerInfo(marker)
 
+  function setMarkerInfo(marker){
+    //Content structure of info Window for the Markers
+    var contentString = $('<div class="marker-info-win">'+
+    '<div class="marker-inner-win"><span class="info-content">'+
+    '<h1 class="marker-heading">' + ($('#place_name').val()||marker.title||'New Marker') + '</h1>'+
+    (desc||' ') +
+    '</span>'+
+    '</div></div>');
 
+    //Create an infoWindow
+    var infowindow = new google.maps.InfoWindow();
+
+    //set the content of infoWindow
+    infowindow.setContent(contentString[0]);
+
+    //add click event listener to marker which will open infoWindow
+    google.maps.event.addListener(marker, 'click', function() {
+      infowindow.open(map,marker); // click on marker opens info window
+    });
+  }
 
 }
 
+
+
 $(function () {
-  google.maps.event.addDomListener(window, 'load', initialize);
-  document.querySelector('form').onkeypress = checkEnter;
+  if($('#map-canvas').length != 0) {
+    google.maps.event.addDomListener(window, 'load', initialize);
+    document.querySelector('form').onkeypress = checkEnter;
+  } else if($('#map-canvas-show').length > 0) {
+    google.maps.event.addDomListener(window, 'load', initialize_show);
+  }
   // $('body').css("background-color",$(".navbar-collapse ul li.active :first").css('background-color'))
 });

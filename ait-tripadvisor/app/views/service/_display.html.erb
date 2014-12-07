@@ -11,7 +11,7 @@
       </tr>
       <% @directions.each  do |direction| %>
           <tr align="left">
-            <td><%= direction.destination.name %></td>
+            <td><%= link_to direction.destination.name, service_place_path(direction.destination) %></td>
             <td><%= direction.transportation.type%> <!--%= Transportation.find(route.transportation_id).type %--></td>
             <td><%= direction.price %></td>
             <td><!--%= route.description %--> <%=link_to 'Detail', service_direction_path(direction) %> </td>

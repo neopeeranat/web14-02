@@ -1,6 +1,6 @@
 class Service::PlacesController < ApplicationController
-  before_action :authenticate_user! , except: [:index]
-
+  before_action :authenticate_user! , except: [:index, :show]
+  before_action :set_place, only: [:show]
   # GET /places
   # GET /places.json
   def index
@@ -36,9 +36,15 @@ class Service::PlacesController < ApplicationController
     end
   end
 
+  def show
+
+  end
 
   private
 
+    def set_place
+      @place = Place.find(params[:id])
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def place_params
       params.require(:place).permit(:name,:description,:category_id,:lat,:lng)

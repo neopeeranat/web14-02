@@ -21,12 +21,12 @@ Rails.application.routes.draw do
  # map.resources :users
   resources :users, only: [:show]
 
-  
+
   #Service
   get 'service/' => 'service#index'
   namespace :service do
     resources :directions, only: [:new, :create, :show]
-    resources :places, only: [:index, :new, :create]
+    resources :places, only: [:index, :new, :create, :show]
   end
 
   match '/search' => 'service#search', via: [:get, :post]
