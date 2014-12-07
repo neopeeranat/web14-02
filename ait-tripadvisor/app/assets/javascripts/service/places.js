@@ -22,12 +22,13 @@ function initialize() {
 
   // Create the search box and link it to the UI element.
   var input = /** @type {HTMLInputElement} */(
-    document.getElementById('pac-input')
+    //document.getElementById('pac-input')
+      document.getElementById('place_name')
   );
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
+   // var searchBox = new google.maps.places.SearchBox((input));
+    var searchBox = new google.maps.places.SearchBox((input));
+  //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
   /** @type {HTMLInputElement} */
-  var searchBox = new google.maps.places.SearchBox((input));
 
 
   // [START region_getplaces]
@@ -35,7 +36,7 @@ function initialize() {
   // pick list. Retrieve the matching places for that item.
   google.maps.event.addListener(searchBox, 'places_changed', function() {
     var places = searchBox.getPlaces();
-
+   // alert(places.length);
     if (places.length == 0) {
       return;
     }
@@ -55,6 +56,10 @@ function initialize() {
         anchor: new google.maps.Point(17, 34),
         scaledSize: new google.maps.Size(25, 25)
       };
+       ////////////////For nearby search///////////////////////////////////
+
+        //service.nearbySearch(request, callback);
+        /////////////////////////End/////////////////////////////////////
 
       // Create a marker for each place.
       var marker = new google.maps.Marker({
@@ -106,8 +111,6 @@ function initialize() {
       icon: "http://www.sanwebe.com/assets/google-map-markers-infowindows/icons/pin_green.png" //custom pin icon
     });
     markers.push(marker);
-
-
     setMarkerInfo(marker)
     setLatLng(marker)
     google.maps.event.addListener(marker, "dragend", function(event){
@@ -145,10 +148,6 @@ function initialize() {
 
 }
 
-
-
-
-
 function initialize_show() {
 
   var markers = [];
@@ -158,7 +157,7 @@ function initialize_show() {
   var desc = $('#place_desc').text();
   var mapOptions = {
     zoom: 16,
-    center: mLatLng,
+    center: mLatLng
   };
   map = new google.maps.Map(document.getElementById('map-canvas-show'), mapOptions);
 
@@ -193,14 +192,18 @@ function initialize_show() {
 
 }
 
-
-
 $(function () {
   if($('#map-canvas').length != 0) {
+
     google.maps.event.addDomListener(window, 'load', initialize);
+
+    //google.maps.event.addDomListener(window, 'load', nearPlaces);
     document.querySelector('form').onkeypress = checkEnter;
   } else if($('#map-canvas-show').length > 0) {
+     nearPlaces(map);
     google.maps.event.addDomListener(window, 'load', initialize_show);
+
   }
+
   // $('body').css("background-color",$(".navbar-collapse ul li.active :first").css('background-color'))
 });

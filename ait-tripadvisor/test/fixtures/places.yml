@@ -1,11 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  placeid: 1
-  name: MyString
-  description: MyText
+  placeid: 12
+  name: Phi Phi
+  description: This place is 2 km away from pathaya...
+  category_id: cat1
+
 
 two:
-  placeid: 1
-  name: MyString
-  description: MyText
+  placeid: 12
+  name: Chin mai
+  description: Any body want to go then it will be better to go by air..
+  category_id: cat2
+

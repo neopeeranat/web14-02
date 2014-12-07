@@ -9,7 +9,11 @@ class Place < ActiveRecord::Base
   has_many :origins, :through => :arrivals
 
   belongs_to :category
+  ##########For Testing ###################
 
+  accepts_nested_attributes_for :category
+
+  ##################End ####################
   validates :name, :description, presence: true
   validates_uniqueness_of :name
 
