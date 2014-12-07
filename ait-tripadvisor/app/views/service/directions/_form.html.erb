@@ -5,7 +5,11 @@
 
       <ul>
       <% @direction.errors.each do |attribute, message| %>
-        <li><%= message %></li>
+        <% if attribute.to_s != "origin_id" %>
+          <li><%= "#{Direction.human_attribute_name(attribute)} #{message}" %></li>
+        <% else %>
+          <li><%= "#{message}" %></li>
+        <% end %>
       <% end %>
       </ul>
     </div>
@@ -14,7 +18,7 @@
     <tr>
   <div class="field">
    <td> <h4>Add</h4> </td>
-    <td><%= link_to 'New Place', new_service_place_path, class: "btn btn-primary" %><br> </td>
+    <td><%= link_to 'New Place', new_service_place_path, class: "btn btn-info" %><br> </td>
 
   </div>
     </tr>
@@ -62,7 +66,7 @@
   <div class="actions">
     <td></td>
     <td>
-    <%= f.submit %>
+    <%= f.submit 'Create Directtion', {class: 'btn btn-primary'} %>
     </td>
   </div>
    </tr>
