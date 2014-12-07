@@ -48,13 +48,10 @@ function initialize() {
     console.log(places[0])
     var bounds = new google.maps.LatLngBounds();
     for (var i = 0, place; place = places[i]; i++) {
-      var image = {
-        url: place.icon,
-        size: new google.maps.Size(71, 71),
-        origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(17, 34),
-        scaledSize: new google.maps.Size(25, 25)
-      };
+
+      //in case google map return more than 1 results
+      if(i==1)
+        break;
 
       // Create a marker for each place.
       var marker = new google.maps.Marker({
