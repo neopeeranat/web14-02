@@ -17,12 +17,12 @@ Back
   <dt>Description : </dt>
   <dd id="place_desc"><%= @place.description %></dd>
   <dt>Category : </dt>
-  <dd><%= @place.category.name %></dd>
+  <dd><%= @place.category.nil? ? '' : @place.category.name%></dd>
 
 
 </dl>
 <% if !@place.lat.blank? && !@place.lng.blank? %>
 <div class="container" style="height:400px">
-  <div id="map-canvas-show" data-lat="<%= @place.lat=%>" data-lng="<%= @place.lng%>"></div>
+  <div id="map-canvas-show" data-lat="<%= @place.lat %>" data-lng="<%= @place.lng%>"></div>
 </div>
 <% end %>
