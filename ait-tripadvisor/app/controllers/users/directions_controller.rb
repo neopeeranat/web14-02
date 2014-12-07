@@ -8,6 +8,10 @@ class Users::DirectionsController < ApplicationController
 
   # GET /directions/1/edit
   def edit
+    if @direction.created_by != current_user
+      flash[:alert]="You cannot modify another user direction"
+      redirect_to users_directions_url
+    end
   end
 
   def show
@@ -18,13 +22,18 @@ class Users::DirectionsController < ApplicationController
   # PATCH/PUT /directions/1
   # PATCH/PUT /directions/1.json
   def update
-    respond_to do |format|
-      if @direction.update(direction_params)
-        format.html { redirect_to users_directions_url, notice: 'direction was successfully updated.' }
-        format.json { render :show, status: :ok, location: [:service, @direction] }
-      else
-        format.html { render :edit }
-        format.json { render json: @direction.errors, status: :unprocessable_entity }
+    if @direction.created_by != current_user
+      flash[:alert]="You cannot modify another user direction"
+      redirect_to users_directions_url
+    else
+      respond_to do |format|
+        if @direction.update(direction_params)
+          format.html { redirect_to users_directions_url, notice: 'direction was successfully updated.' }
+          format.json { render :show, status: :ok, location: [:service, @direction] }
+        else
+          format.html { render :edit }
+          format.json { render json: @direction.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -32,10 +41,15 @@ class Users::DirectionsController < ApplicationController
   # DELETE /directions/1
   # DELETE /directions/1.json
   def destroy
-    @direction.destroy
-    respond_to do |format|
-      format.html { redirect_to users_directions_url, notice: 'direction was successfully destroyed.' }
-      format.json { head :no_content }
+    if @direction.created_by != current_user
+      flash[:alert]="You cannot delete another user direction"
+      redirect_to users_directions_url
+    else
+      @direction.destroy
+      respond_to do |format|
+        format.html { redirect_to users_directions_url, notice: 'direction was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
