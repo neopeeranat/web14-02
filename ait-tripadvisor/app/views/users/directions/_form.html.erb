@@ -10,27 +10,52 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <h4>From AIT</h4>
-    <%= link_to 'New Place', new_service_place_path %>
-  </div>
-  <div class="field">
-    <%= f.label :destination_id %><br>
-    <%= f.text_field :destination_id, id: 'txtDestination' , data:{name: (!@direction.destination.blank?)? @direction.destination.name : nil, url:service_places_path(format: :json) }   %>
-  </div>
-  <div class="field">
-    <%= f.label :transportation_id %><br>
-    <%= f.select :transportation_id, options_from_collection_for_select(Transportation.all, "id", "type", @direction.transportation_id) %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.number_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <table  class="table table-striped">
+    <tr class="field">
+      <td>
+        <h4>From AIT</h4>
+      </td>
+      <td>
+        <%= link_to 'New Place', new_service_place_path, class: "btn btn-primary" %>
+      </td>
+    </tr>
+    <tr class="field">
+      <td>
+        <%= f.label :destination_id %>
+      </td>
+      <td>
+        <%= f.text_field :destination_id, id: 'txtDestination' , data:{name: (!@direction.destination.blank?)? @direction.destination.name : nil, url:service_places_path(format: :json) }   %>
+      </td>
+    </tr>
+    <tr class="field">
+      <td>
+        <%= f.label :transportation_id %>
+      </td>
+      <td>
+        <%= f.select :transportation_id, options_from_collection_for_select(Transportation.all, "id", "type", @direction.transportation_id) %>
+      </td>
+    </tr>
+    <tr class="field">
+      <td>
+        <%= f.label :price %>
+      </td>
+      <td>
+        <%= f.number_field :price %>
+      </td>
+    </tr>
+    <tr class="field">
+      <td>
+        <%= f.label :description %>
+      </td>
+      <td>
+        <%= f.text_area :description,  {style:"min-width:70%;height:100px"} %>
+      </td>
+    </tr>
+    <tr>
+      <td class="actions">
+        <%= f.submit 'Update Directtion', {class: 'btn btn-primary'}%>
+      </td>
+    </tr>
+
+  </table>
 <% end %>

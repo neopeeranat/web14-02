@@ -14,8 +14,8 @@
   <tbody>
     <% current_user.directions.joins('LEFT OUTER JOIN places ON directions.destination_id = places.id').order('places.name').each do |direction| %>
     <tr>
-      <td><%= direction.origin %></td>
-      <td><%= direction.destination %></td>
+      <td><%= link_to direction.origin, service_place_path(direction.origin) %></td>
+      <td><%= link_to direction.destination, service_place_path(direction.destination) %></td>
       <td><%= direction.transportation %></td>
       <td><%= direction.price %></td>
       <td  class="col-md-2 col-xd-12" align="center">

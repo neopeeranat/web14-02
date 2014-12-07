@@ -1,30 +1,65 @@
+<% content_for :head do %>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
+<%= javascript_include_tag "users/direction_show.js" %>
+<%= stylesheet_link_tag "users/direction_show.css" %>
+<% end %>
+
 <div class="container">
   <div class="page-header">
     <h1>Direction detail</h1>
   </div>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <td>Origin:</td>
-        <td><%= @direction.origin%></td>
-      </tr>
-      <tr>
-        <td>Destination:</td>
-        <td><%= @direction.destination%></td>
-      </tr>
-      <tr>
-        <td>Price:</td>
-        <td><%= @direction.price%></td>
-      </tr>
-      <tr>
-        <td>Description:</td>
-        <td><%= @direction.description%></td>
-      </tr>
-    </thead>
-  </table>
+  <div class="row">
+    <div class="col-md-6">
+      <table class="table">
+        <thead>
+          <tr>
+            <td>Origin:</td>
+            <td><%= @direction.origin%></td>
+          </tr>
+          <tr>
+            <td>Destination:</td>
+            <td><%= @direction.destination%></td>
+          </tr>
+          <tr>
+            <td>Price:</td>
+            <td><%= @direction.price%></td>
+          </tr>
+          <tr>
+            <td>Description:</td>
+            <td><%= @direction.description%></td>
+          </tr>
+        </thead>
+      </table>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <i class="glyphicon glyphicon-list-alt"></i>&nbsp;<a data-toggle="collapse" data-parent="#accordion" href="#route_detail">Route Datails</a>
+          </h4>
+        </div>
+        <div id="route_detail" class="panel-collapse collapse">
+          <div class="panel-body"  id="directions-panel">
 
-  <div class="row vertical-align">
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-6"  style="height:480px">
+
+        <% if !@direction.destination.lat.blank? && !@direction.destination.lng.blank? %>
+          <%= content_tag 'div', nil, {id:'map-canvas-show', data:{origin:@direction.origin, destination:@direction.destination , transportation:@direction.transportation}} %>
+        <% end %>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+
+    </div>
+  </div>
+
+  <div class="row vertical-align" style="padding-top:10px">
     <div class="col-md-6 pull-left">
       <%= link_to 'Back', users_directions_path, class:'btn btn-primary' %>
     </div>

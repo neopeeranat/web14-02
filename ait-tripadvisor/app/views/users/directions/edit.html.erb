@@ -6,5 +6,8 @@
     <%= render 'form' %>
   </div>
 
-  <%= link_to 'Back', users_directions_path %>
+  <%= link_to  users_directions_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-circle-arrow-left"></span>
+    Back
+  <% end %>
 </div>
